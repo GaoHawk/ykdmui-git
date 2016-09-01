@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">    
+   <title></title>
+	<link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Style.css">
+	<script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>	
+	<script src="../../../../public/Frontend/MUI/Js/jQuery-2.2.1.min.js"></script>
+	<link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Font.css" />
+
+    <style>
+		html,
+		body {
+			background-color: #efeff4;
+		}
+		.mui-bar~.mui-content .mui-fullscreen {
+			top: 44px;
+			height: auto;
+		}
+		.mui-pull-top-tips {
+			position: absolute;
+			top: -20px;
+			left: 50%;
+			margin-left: -25px;
+			width: 40px;
+			height: 40px;
+			border-radius: 100%;
+		}
+		.mui-bar~.mui-pull-top-tips {
+			top: 74px;
+		}
+		.mui-pull-top-wrapper {
+			width: 42px;
+			height: 42px;
+			display: block;
+			text-align: center;
+			background-color: #efeff4;
+			border: 1px solid #ddd;
+			border-radius: 25px;
+			background-clip: padding-box;
+			box-shadow: 0 4px 10px #bbb;
+			/*overflow: hidden;*/
+		}
+		.mui-pull-top-tips.mui-transitioning {
+			-webkit-transition-duration: 200ms;
+			transition-duration: 200ms;
+		}
+		.mui-pull-top-tips .mui-pull-loading {
+			/*-webkit-backface-visibility: hidden;
+			-webkit-transition-duration: 400ms;
+			transition-duration: 400ms;*/
+			
+			margin: 0;
+		}
+		.mui-pull-top-wrapper .mui-icon,
+		.mui-pull-top-wrapper .mui-spinner {
+			margin-top: 7px;
+		}
+		.mui-pull-top-wrapper .mui-icon.mui-reverse {
+			/*-webkit-transform: rotate(180deg) translateZ(0);*/
+		}
+		.mui-pull-bottom-tips {
+			text-align: center;
+			background-color: #efeff4;
+			font-size: 15px;
+			line-height: 40px;
+			color: #777;
+		}
+		.mui-pull-top-canvas {
+			overflow: hidden;
+			background-color: #fafafa;
+			border-radius: 40px;
+			box-shadow: 0 4px 10px #bbb;
+			width: 40px;
+			height: 40px;
+			margin: 0 auto;
+		}
+		.mui-pull-top-canvas canvas {
+			width: 40px;
+		}
+		.mui-slider-indicator.mui-segmented-control {
+			background-color: #efeff4;
+		}
+		.mui-bar-nav~.mui-content .mui-pull-top-pocket{
+			top:0px;
+		}
+		.mui-segmented-control.mui-scroll-wrapper .mui-control-item{
+			font-size: 14px;
+			width: 30%;
+			overflow:visible ;
+		}
+		.mui-segmented-control.mui-scroll-wrapper .mui-control-item:nth-child(3)::after{
+			content: '\e585';
+		}
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.desc{
+			color: #007aff;
+		}
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.asce{
+			color: red;
+		}
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.asce::after{
+			content: '\e584';
+		}
+		.custom-backdrop{
+			display: none;
+		    position: fixed;
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    z-index: 999;
+		    background-color: rgba(0,0,0,0.3);
+		}
+		
+     	#topPopover {
+            /*position: fixed;*/
+
+        }
+
+        /*.mui-table-view li {
+            padding: 0;
+            text-align: center;
+        }*/
+
+        #topPopover .mui-popover-arrow {
+            left: auto;
+            right: 6px;
+        }
+
+        .mui-popover {
+            min-height: 40px;
+            width: 100px;
+        }
+		.custom-table-view{
+			position: relative;
+			padding-left: 0;
+			margin-top: 0;
+			margin-bottom: 0;
+			list-style: none;
+
+			max-height: 300px;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+			background-color: #f7f7f7;
+			background-image: none;
+			border-radius: 7px;
+		}
+		.backColor {
+			background-color: rgb(55, 165, 255);
+		}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav backColor">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+		<h1 class="mui-title">商品目录</h1>
+		<a class="mui-icon mui-icon-bars mui-pull-right" style="color: white;" href="#topPopover">
+			
+		</a>
+	</header>
+	<footer class="mui-bar mui-bar-footer">
+		<nav class="mui-bar mui-bar-tab">
+		<!--<a href="#bottomPopover" class="mui-btn mui-btn-link mui-pull-left">菜单</a>-->
+		<a class="mui-tab-item" href="http://www.baidu.com">
+			<i class="iconfont">&#xe668;</i>
+			<div class="name" style="font-size: 13px;">首页</div>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-chat" id="collection">
+			<i class="iconfont">&#xe66d;</i>
+			<div class="name">收藏</div>
+			
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-contact">
+			<i class="iconfont">&#xe666;</i>
+			<div class="name">购物车</div>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-map">
+			<i class="iconfont">&#xe665;</i>
+			<div class="name">我的</div>
+		</a>
+		</nav>
+	</footer>
+	<div class="mui-content">
+		<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+			<div class="mui-scroll" style="width: 100%;">
+				<a class="mui-control-item" href="&totalSort">
+					综合
+				</a>
+				<a class="mui-control-item" href="&timeDesc">
+					新品
+				</a>
+				<a class="mui-control-item mui-icon desc" href="&priceSort">
+					价格
+				</a>
+			</div>
+		</div>
+		
+		<div id="pullrefresh" class="mui-scroll-wrapper" style="margin-top: 85px;">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-1
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-2
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-3
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-4
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-5
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-6
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-7
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-8
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-9
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-10
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-11
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-12
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-13
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-14
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-15
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-16
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-17
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-18
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-19
+					</li>
+					<li class="mui-table-view-cell">
+						第1个选项卡子项-20
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>	
+	       <!--遮罩层-->
+			<div class="custom-backdrop"></div>
+			<!--下拉菜单-->
+		    <div id="topPopover" class="mui-popover">
+		        <div class="mui-popover-arrow"></div>
+
+		            <ul class="mui-table-view">
+		                <li id="sort1" class="mui-table-view-cell">
+							相关排序
+		                </li>
+		                <li id="sort2" class="mui-table-view-cell">
+		                  	 时间排序
+		                </li>
+		              	<li id="sort3" class="mui-table-view-cell">
+		                  	 价格排序
+		                </li>
+		            </ul>
+
+		    </div>
+		    
+		    <div id="childrenLi" class="mui-popover " style="">
+		    	<div class="mui-popover-arrow" style="left: 4px;"></div>
+		            <ul class="mui-table-view">
+		                <li id="sort4" class="mui-table-view-cell">
+		                  	 人气排序
+		                </li>
+		              	<li id="sort5" class="mui-table-view-cell">
+		                  	 收藏排序
+		                </li>
+		            </ul>
+		    </div>
+    <script type="text/javascript" charset="UTF-8">
+    $(function(){
+
+    	var backdrop = $('.custom-backdrop');
+    	var pullrefresh = $('#pullrefresh');
+    	var height = pullrefresh.height();
+    	var childrenLi = $('#childrenLi');
+    	pullrefresh.css({
+    		height: height - 50 + 'px'
+    	});
+    	
+    	var topPopover = $('#topPopover');
+    	var windowLen = $(window).width();
+    	console.log(windowLen);
+
+		//价格排序点击事件
+
+
+    	$('a').on('tap',function(){
+    		var href = $(this).attr('href');
+    		if(href.indexOf('#') !== -1  && href.indexOf("http:") === -1) {
+				backdrop.show();
+				topPopover.css({
+					opacity: 1,
+					display: 'block',
+					top: 57 + 'px',
+					left :  windowLen - 105 + 'px'
+				});
+    			return false;
+    		}else
+			if(href.indexOf('&') !== -1){
+				var sort = href.slice(1);
+				if($(this).hasClass('desc')){
+					$(this).removeClass('desc').addClass('asce');
+					sort = 'priceDesc';
+				}else
+				if($(this).hasClass('asce')){
+					sort = 'priceAsce';
+					$(this).removeClass('asce').addClass('desc');
+				}
+				// 传入排序规则
+				if(sort === 'totalSort'){
+					backdrop.show();
+					childrenLi.css({
+						opacity: 1,
+						display: 'block',
+						top: 90 + 'px',
+						left : windowLen * 0.11 + 3 + 'px'
+					});
+				}
+				sortList(sort);
+				return false;
+			}
+			else{
+    			location.href = href
+    		}
+    	});
+    	$(".mui-popover li.mui-table-view-cell").on('tap',function(){
+//  		backdrop.show();
+    		var id = this.getAttribute('id');
+    		var index = 0;
+    		var maxLen = topPopover.css("left");
+			if(isNaN(parseInt(maxLen))){
+				console.log(false);
+			}else{
+				childrenLi.css({
+					left: parseInt(maxLen) - 110 + 'px',
+					opacity : 1
+				});
+				console.log(parseInt(maxLen));
+			}
+
+    		
+
+    		switch (id){
+//				case1 到case3 点击父节点生成子节点
+    			case "sort1":
+    				console.log(id);
+    				childrenLi.css({
+    					top: 57 + 45 * (index) + 'px'
+    				});
+    				break;
+    			case "sort2":
+    				childrenLi.css({
+    					top: 57 + 45 * (index+1) + 'px'
+    				});
+    				console.log(id);
+    				break;
+    			case "sort3":
+    				childrenLi.css({
+    					top: 57 + 45 * (index+2) + 'px'
+    				});
+    				break;
+//				排序代码
+				default:
+//					排序规则
+					var sort = this.getAttribute('id');
+					closePanel(backdrop,topPopover,childrenLi);
+					sortList(sort);
+					break;
+
+    		}
+    		childrenLi.show();
+
+    	});
+		//		下拉菜单取消点击遮罩层
+		backdrop.on('tap',function(){
+//			弹出菜单是否隐藏
+			if($('#childrenLi').is(":hidden")){
+					return;
+			}else {
+				closePanel(backdrop,topPopover,childrenLi);
+			}
+		});
+
+//		排序方法
+//		function closePanelAndSort(){
+//			var args  = arguments.length;
+//			console.log(args);
+//			if(args ===3){
+//				arguments[0].hide();
+//				arguments[1].css({
+//					opacity: 0,
+//					display:'none'
+//				});
+//				arguments[2].css({
+//					opacity: 0,
+//					display:'none'
+//				});
+//			}eles
+//			if(args ===4){
+//				var sort = arguments[0];
+//				/*
+//					排序code
+//				 */
+//				sortList(sort);
+//				arguments[1].hide();
+//				arguments[2].css({
+//					opacity: 0,
+//					display:'none'
+//				});
+//				arguments[3].css({
+//					opacity: 0,
+//					display:'none'
+//				});
+//			}else
+//			if(args === 1){
+//				var sort = arguments[0];
+//				/*
+//				 排序code
+//				 */
+//				sortList(sort);
+//			}
+//		}
+		function  sortList(sort){
+			console.log(sort);
+			/*todo
+
+			 */
+		}
+		function closePanel(backdrop,topPopover,childrenLi){
+			backdrop.hide();
+			topPopover.css({
+				opacity: 0,
+				display:'none'
+			});
+			childrenLi.css({
+				opacity: 0,
+				display:'none'
+			});
+		}
+    });
+		var backdrop = $('.custom-backdrop');
+    	mui.init({
+      		swipeBack: true,
+      	});
+ 		mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		});
+		mui.init({
+			pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: down
+					},
+					up:{
+						callback:up
+					}
+					
+				}
+		});
+		function down(){
+			backdrop.show();
+			setTimeout(function(){
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+				backdrop.hide();
+			},1500);
+		}
+      	function up(){
+      		backdrop.show();
+      		setTimeout(function(){
+				var ul = document.querySelector('.mui-table-view');
+				ul.appendChild(createFragment(ul, 0, 5));
+  				mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+  				backdrop.hide();
+      		},1500);
+      	}
+      	
+		var createFragment = function(ul, index, count, reverse) {
+			var length = ul.querySelectorAll('li').length;
+			var fragment = document.createDocumentFragment();
+			var li;
+			for (var i = 0; i < count; i++) {
+				li = document.createElement('li');
+				li.className = 'mui-table-view-cell';
+				li.innerHTML = '第' + (index + 1) + '个选项卡子项-' + (length + (reverse ? (count - i) : (i + 1)));
+				fragment.appendChild(li);
+			}
+			return fragment;
+		};
+
+</script>
+</body>
+</html>

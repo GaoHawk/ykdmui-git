@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Style.css">
+    <link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Other.css">
+    <script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>
+    <script src="../../../../public/Frontend/MUI/Js/jQuery-2.2.1.min.js"></script>
+    <link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Font.css" />
+   <link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/product/productDetail.css" />
+    <style>
+	.mui-slider .mui-slider-item img{
+		height: 166px;
+		/*background-size:cover ;*/
+	}
+    </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav backColor">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
+    <h1 class="mui-title">商品详情</h1>
+    <a class="mui-icon mui-icon-bars mui-pull-right"  href="#topPopover">
+
+    </a>
+</header>
+<footer class="mui-bar mui-bar-footer" style="display:;">
+    <nav class="mui-bar mui-bar-tab">
+        <a class="mui-tab-item" href="" >
+            <span class="iconfont icon-shouye"></span>
+            <span class="mui-tab-label">关注</span>
+        </a>
+        <a class="mui-tab-item" href="#tabbar-with-chat" id="collection">
+            <span class="iconfont" style="">&#xe666;<span class="mui-badge" style="">9</span></span>
+            <span class="mui-tab-label" style="">购物车</span>
+        </a>
+        <a class="mui-tab-item" href="#tabbar-with-contact">
+            <div class="name">加入购物车</div>
+        </a>
+        <a class="mui-tab-item" href="#tabbar-with-map">
+            <div class="name">立即购买</div>
+        </a>
+    </nav>
+</footer>
+
+<div class="mui-content">
+    <div id="slider" class="mui-slider" >
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../images/cbd.jpg">
+					</a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img style="" src="../images/shuijiao.jpg">
+					</a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+					<a href="../images/muwu.jpg">
+						<img src="../images/muwu.jpg">
+					</a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../images/yuantiao.jpg">
+					</a>
+				</div>
+				<!-- 第四张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../images/cbd.jpg">
+					</a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate" style="transform: ;margin-top: ;">
+					<a href="#">
+						<img src="../images/shuijiao.jpg">
+					</a>
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+		
+		<!--商品名称 价格-->
+		<div id="productName" class="custom-goods bdr-tb">
+			<div class="basic-info bdr-b borb">
+				<div class="prod-title">
+					<div class="title-text">
+						托管型30平方私家有机菜园
+						<i class="self-shopping-icon self-shopping-changeradius">一块地自营</i>
+					</div>
+				</div>
+				
+				<!--小子促销，产品描述-->
+				<div class="prod-act">
+					【绿色健康，价格公道】定制庄园，有机蔬菜，轻松一点！
+				</div>
+				
+				<!--价格样式-->
+				<div class="prod-price prod-price-width">
+					<span class="yang-pic"></span>
+					<span class="yang-pic-price">749.00</span>
+					<div style="clear: both;"></div>
+				</div>
+
+				<!--通知-->
+				<div class="depreciate-arrival-inform-box">
+					<!--<div class="depreciate-arrival-inform">通知</div>-->
+				</div>
+				<div style="clear: both;"></div>
+				<div class="prod-seckill"></div>
+			</div>
+		</div>
+		
+		<!--选择商品-->
+		<div id="selectedPro" class="custom-goods bdr-tb mar-t">
+			<div class="prod-spec bdr-b" id="prodSpecArea">
+				<div class="spec-desc J_ping" id="natureID">
+					<span class="part-note-msg">已选</span>
+					<div class="base-txt" id="specDetailInfo">
+					    
+					    	代耕代种土地 <span class="pick pick-size">30平米</span>/<span class="pick pick-tenacy">1年</span>
+					    	&nbsp;&nbsp;
+						<span id="amount" class="custom-amount">1件</span>
+					</div>
+					<em class="icon-arrow-up arrow-fold"></em>
+				</div>
+			
+				 <!--选择版本-->
+				 <div class="nature-container" id="natureCotainer">
+				 	<!--租期-->
+				 	<!--产品规格-->
+				 	<div class="pro-size">
+				 		<span class="part-note-msg">租期</span>
+				 		<p id="tenancy">
+				 			
+				 			<a data_id="11" class="a-item attr">1年
+				 			
+				 			</a>
+				 			<a class="a-item">2年</a>
+				 			<a class="a-item">3年</a>
+				 		</p>
+				 	</div>
+				 	<div class="pro-size">
+				 		<span class="part-note-msg">面积</span>
+				 		<p id="size">
+				 			<a class="a-item selected">30平米</a>
+				 			<a class="a-item">50平米</a>
+				 			<a class="a-item">60平米</a>
+				 		</p>
+				 	</div>
+				 	<!--容量-->
+				 	<!--数量-->
+				 	<div class="pro-count">
+				 		<span class="part-note-msg">数量</span>
+				 		<div class="quantity-wrapper">
+				 			<input type="hidden" id="limitSukNum1025" value="200"/>
+				 			<a class="quantity-decrease" onclick="minus()">
+				 				<em id="minus">-</em>
+				 			</a>
+				 			<input type=""  class="quantity" size="4" value="1" 
+				 				id="number" onblur="modify();" style="width: 39px;height: 100% ;border-top:.8px solid #848689;border-bottom:.8px solid #848689;border-radius: 0;"/>
+				 			<a class="quantity-increase" id="quantityPlus" onclick="plus()">
+				 				<em id="" class="custom-plus">+</em>
+				 			</a>	
+				 			
+				 		</div>
+				 	</div>
+					
+					<div class="pro-stock">
+						<span class="part-note-msg">库存</span>
+						<div class="base-txt">
+							剩余
+							<span class="custom-amount">115件</span>
+						</div>
+					</div>
+				 </div>
+			</div>
+		
+			<!--配送商品-->
+			<div class="send-to"></div>
+		</div>
+		
+		<!--商品详情和供货商家-->
+		<div id="slider" class="mui-slider bdr-tb mar-t">
+			<div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted">
+				<a class="mui-control-item mui-active" href="#item1">
+					商品详情
+				</a>
+				<a class="mui-control-item" href="#item2">
+					供货商家
+				</a>
+			</div>
+			
+			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
+			<div id='segmentedControlContents' class="custom-goods">
+				<div id="item1" class="mui-control-content mui-active">
+		                 <li class="" style="height: auto;text-indent: 2em;line-height: 30px;padding: 2% 0">
+                            <p>    提供标准地一块（30平米）；<br>    提供农资农具；<br>    基地农业技师全程监管种植；<br>    每周3次有机蔬菜的配送；<br>    880元/月；9880元/年<br>注：<br>    <strong>一旦签约，一块地公司将在为会员第一次配送的时候进行费用的收取。我们的宗旨是，在保证质量的情况下尽量保障产量，产品质量永远是我们工作的最高追求；<br>    每名会员最多可租种10块标准地块。</p>
+
+                        </li>
+				</div>
+				<div id="item2" class="mui-control-content">
+					  <li style="height: auto;" class="">
+                            <div class="ui-list ui-list-text ui-border-tb">
+                                <div class="ui-border-t">
+                                    <div class="ui-list-info" style="padding: 2% 0">
+                                        <h4 class="ui-nowrap">供货商：武汉一块地农业科技有限公司</h4>
+                                    </div>
+                                </div>
+                                <div class="ui-list-info" style="padding: 2% 0">
+                                    <h4 class="ui-nowrap">库存量：充足</h4>
+                                    <h4 class="ui-nowrap">产地：武汉-黄陂</h4>
+                                </div>
+                            </div>
+                        </li>
+				</div>
+			</div>
+		</div>
+		
+		<!--商品详情 和评价-->
+		<div id="" class="custom-goods bdr-tb mar-t" style="padding-bottom: 6px;">
+			<!--评价start-->
+			<div class="goodseval bdr-b" id="btnAssess">
+				<div class="info">
+					<a class="J_ping">
+						<span class="part-note-msg">商品评价</span>
+						<span class="good-comment-text">
+							<em id="goods">100%</em>
+							好评
+						</span>
+						<span class="text-fr">
+							<em id="comments">2</em>
+							人评价
+						</span>
+					</a>
+					<i class="icon-arrow icon-arrow-right"></i>
+				</div>
+			</div>
+		
+			<!--评价正文-->
+			<div class="prod-comment bdr-b" id="showDetail">
+					<!--数据列表-->
+					<ul class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell">
+						    <div class="user_info">
+		                        <img src="http://m.51ykd.com/Frontend/MUI/Image/Logo.jpg" alt="">
+		                        <div>
+		                            <p class="userName">fengshuai</p>
+		                        </div>
+		                    </div>
+		                    <p class="evaluate_detail">
+		                        很好很不错非常棒
+		                    </p>
+						</li>
+						<li class="mui-table-view-cell">
+									    <div class="user_info">
+		                        <img src="http://m.51ykd.com/Frontend/MUI/Image/Logo.jpg" alt="">
+		                        <div>
+		                            <p class="userName">fengshuai</p>
+		                        </div>
+		                    </div>
+		                    <p class="evaluate_detail">
+		                        很好很不错非常棒
+		                    </p>
+						</li>
+					
+					</ul>
+			</div>
+		</div>
+</div>
+<script src="../../../../public/Frontend/MUI/Js/product/productDetail.js"></script>
+<!--顶部栏和底部栏的js-->
+<script src="../../../../public/Frontend/MUI/Js/product/pro-navbar.js"></script>
+<script type="text/javascript" charset="UTF-8">
+    mui.init({
+    	swipeBack:true
+    });
+	mui.plusReady(function(){
+    		console.log(plus.webview);
+    		var self = plus.webview.currentWebview();
+    		console.log(self);
+	});
+    
+//  轮播图点击事件（在轮播组件的a标签的 href设置地址进行跳转）
+
+//
+</script>
+</body>
+</html>

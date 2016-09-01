@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Style.css">
+		<script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>	
+		<script src="../../../../public/Frontend/MUI/Js/jQuery-2.2.1.min.js"></script>
+		<link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/catalogue/shopCenter.css" />
+		<link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Font.css" />
+		<!--App自定义的css-->
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+				overflow-x: hidden;
+			}
+			.mui-row.mui-fullscreen>[class*="mui-col-"] {
+				height: 100%;
+			}
+			.mui-col-xs-3,
+			.mui-control-content {
+				overflow-y: auto;
+				height: 100%;
+			}
+			.mui-segmented-control .mui-control-item {
+				line-height: 50px;
+				width: 100%;
+			}
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				background-color: #fff;
+			}
+			/*.mui-bar-nav~.mui-content .mui-pull-top-pocket{
+				top: 0;
+			}*/
+			/*下拉刷新相关代码*/
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 18px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				/*overflow: hidden;*/
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			.mui-scroll-wrapper{
+				/*top: 44px;*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav backColor">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">产品目录</h1>
+			<a class="mui-icon mui-icon-search mui-pull-right"></a>
+		</header>
+		
+		<footer class="mui-bar mui-bar-footer">
+			<nav class="mui-bar mui-bar-tab">
+			<!--<a href="#bottomPopover" class="mui-btn mui-btn-link mui-pull-left">菜单</a>-->
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<i class="iconfont">&#xe668;</i>
+				<div class="name" style="font-size: 13px;">首页</div>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-chat" id="collection">
+				<i class="iconfont">&#xe66d;<span class="mui-badge custom-badge">9</span></i>
+				<div class="name">收藏</div>
+				
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact">
+				<i class="iconfont">&#xe666;</i>
+				<div class="name">购物车</div>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map">
+				<i class="iconfont">&#xe665;</i>
+				<div class="name">我的</div>
+			</a>
+			</nav>
+		</footer>
+		<!--<div  class="refresh" style="height:30px;width:100%;text-align: center;display: none;margin-top: 17px;" >
+			<span class="mui-spinner"></span>
+		</div>-->
+		<div class="mui-content mui-row mui-fullscreen ">
+			<div class=" mui-col-xs-3" style="border-right: 1px solid rgba(200, 199, 204, 1);z-index: 1;overflow-y: visible;">
+				<div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical"  style="overflow: visible;">
+					<a class="mui-control-item" href="#content1">
+						<i class="iconfont">&#xe641;</i>
+						<span>蔬菜瓜果</span>
+					</a>
+					<a class="mui-control-item" href="#content2">
+						<i class="iconfont">&#xe63b;</i>
+						<span>作物种苗</span>
+					</a>
+					<a class="mui-control-item" href="#content3">
+						<i class="iconfont">&#xe64f;</i>
+						<span>私家菜园</span>
+					</a>
+					<a class="mui-control-item" href="#content4">
+						<i class="iconfont">&#xe620;</i>
+						<span>农资农具</span>
+					</a>
+					<a class="mui-control-item" href="#content5">
+						<i class="iconfont">&#xe66e;</i>
+						<span>农事服务</span>
+					</a>
+					<a class="mui-control-item" href="#content6">
+						<i class="custom-icon"></i>
+						<span>促销</span>
+					</a>
+				</div>
+			</div>
+			<div id="segmentedControlContents" class="mui-col-xs-9 custom-menuInfo" style="border-left: 1px solid rgba(200, 199, 204, 0);width: 75%;position: static;">
+				
+			</div>
+		</div>
+		<div class="custom-backdrop"></div>
+		<script src="../../../../public/Frontend/MUI/Js/MUI.pullToRefresh.js"></script>	
+		<script src="../../../../public/Frontend/MUI/Js/MUI.pullToRefresh.material.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+
+	/*	-----获得产品分类结构-----  */
+			var menu = $('#segmentedControls');
+			var menuItem = menu.children();
+			var ctrBtn = $('.mui-control-item');
+			var controls = document.getElementById("segmentedControls");
+			var contentItems = $(".mui-control-content");
+			var contents = document.getElementById("segmentedControlContents");
+			// var html = [];
+			var glMenu = {};
+			var contentId = "#content1";
+			var backdrop = $('.custom-backdrop');
+			
+			glMenu.data = {
+				"content1": {
+					zixiang1: {
+						name: "根菜类",
+						children:{
+							opt1:{
+								name: "萝卜类",
+								Image:"luobu.png",
+								href:""
+							},
+							opt2:{
+								name: "红薯类",
+								Image:"hongshu-1.png",
+								href:""
+							}
+						}
+					},
+					zixiang2:{
+						name: "叶菜类",
+						children:{
+							opt1:{
+								name: "白菜类",
+								Image:"baicai.png",
+								href: ""
+							},
+							opt2:{
+								name:"绿叶菜类",
+								Image:"lvyecai.png",
+								href:""
+							}
+						}
+					},
+					zixiang3:{
+						name: "薯芋类",
+						children:{
+							opt1:{
+								name:"芋头类",
+								Image:"yutou.png",
+								href:""
+							},
+							opt2:{
+								name:"马铃薯类",
+								Image:"malingshu_2.png",
+								href:""
+							},
+							opt3:{
+								name:"山药类",
+								Image:"shanyao_2.png",
+								href:""
+							}
+						}
+					},
+					zixiang4:{
+						name: "瓜豆类",
+						children:{
+							opt1:{
+								name:"瓜类",
+								Image:"gua.png",
+								href:""
+							},
+							opt2:{
+								name:"豆类",
+								Image:"dou.png",
+								href:""
+							}
+						}
+					},
+					zixiang5:{
+						name:"葱蒜类",
+						Image:"cong_2.png",
+						href:""
+					
+					}
+				},
+				"content2":{
+										zixiang1: {
+						name: "根菜类",
+						children:{
+							opt1:{
+								name: "萝卜类",
+								Image:"luobu.png",
+								href:""
+							},
+							opt2:{
+								name: "红薯类",
+								Image:"hongshu-1.png",
+								href:""
+							}
+						}
+					},
+					zixiang2:{
+						name: "叶菜类",
+						children:{
+							opt1:{
+								name: "白菜类",
+								Image:"baicai.png",
+								href: ""
+							},
+							opt2:{
+								name:"绿叶菜类",
+								Image:"lvyecai.png",
+								href:""
+							}
+						}
+					}
+				},
+				"content3":{
+						zixiang4:{
+						name: "瓜豆类",
+						children:{
+							opt1:{
+								name:"瓜类",
+								Image:"gua.png",
+								href:""
+							},
+							opt2:{
+								name:"豆类",
+								Image:"dou.png",
+								href:""
+							}
+						}
+					},
+					zixiang5:{
+						name:"葱蒜类",
+						children:{
+							opt1:{
+								name:"葱类",
+								Image:"cong_2.png",
+								href:""
+							},
+							opt2:{
+								name:"蒜类",
+								Image:"shuan.png",
+								href:""
+							}
+						}
+					}
+				}
+			};
+			
+			var renderPage = function (arg1){
+				var html = [];
+				// console.log(arg1);
+				for(var k in arg1.data){
+			 	 html.push('<div id="' + k + '" class="mui-control-content"><div class="mui-scroll-wrapper"><div class="mui-scroll"><ul class="mui-table-view" style="left: 27px;">');
+				  for(var n in arg1.data[k]){
+				  	// console.log(arg1.data[k][n].children);
+				  
+			  			html.push('<li class="custom-view-cell"><div class="custom-view-cell-fenlei"><span>' + arg1.data[k][n].name + 
+			  			'</span></div><div class="custom-view-cell-img">');
+		  				if(!arg1.data[k][n].children){
+				  			html.push('<a class="custom-img" src="'+ arg1.data[k][n].href + '"><div class="custom-view-img" style="background-image:url(../../../../resources/views/Frontend/images/'+ glMenu.data[k][n].Image +')"></div><span>' + glMenu.data[k][n].name  + 
+				  						'</span></a>');
+				  		}else{
+				  			for(var m in arg1.data[k][n].children){
+				  				var result = arg1.data[k][n].children[m];
+				  				// console.log(result);
+				  				switch (m){
+				  					case "opt1":
+				  						html.push('<a class="custom-img" src="'+ result.href + '"><div class="custom-view-img" style="background-image:url(../../../../resources/views/Frontend/images/'+ result.Image +')"></div><span>' + result.name  + 
+				  						'</span></a>');
+				  						break;
+				  					case "opt2":
+				  						html.push('<a class="custom-img" src="'+ result.href + '"><div class="custom-view-img" style="background-image:url(../../../../resources/views/Frontend/images/'+ result.Image +')"></div><span>' + result.name  + 
+				  						'</span></a>');
+				  						break;
+				  					case "opt3":
+										html.push('<a class="custom-img" src="'+ result.href + '"><div class="custom-view-img" style="background-image:url(../../../../resources/views/Frontend/images/'+ result.Image +')"></div><span>' + result.name  + 
+				  						'</span></a>');
+				  						break;
+				  					default:
+				  						html.push('<a></a>');
+				  						break;
+				  				}
+				  			}
+				  		}
+			  			
+			  			html.push('</div></li>');
+				  }
+				  html.push('</ul></div></div></div>');
+				}
+				 return html;
+			}
+			var page = renderPage(glMenu);
+			contents.innerHTML = page.join('');
+
+
+//			产品目录点击ajax请求
+//			ctrBtn.on("tap",function(){
+//				var id = this.getAttribute('href');
+//
+//				var content = $(id);
+//				console.log(content.length);
+//				if(content.length == 0){
+//				
+//					$.ajax({
+//						type:"post",
+//						url:"data.json",
+//	//					data:{id: id},
+//						dataType:'json',
+//						async:true,
+//						success:function(result){
+//							if(result){
+//								console.log(result);
+//								contents.innerHTML=""
+//								var pg = renderPage(result);
+//								console.log(result.data);
+//
+//								contents.innerHTML = pg.join('');
+//								contents.querySelector(id).classList.add('mui-active');
+//								contents.querySelector(id).classList.add('mui-active');
+//							}
+//						}
+//					});
+//				}
+//
+//			});
+			
+		/*--产品内容区域滚动 --*/
+//		contents.addEventListener('swipedown',function(event){
+//			var active = $(".mui-control-item.mui-active");
+//			var contentId = active[0].hash;
+//			var refreshDiv = $(".refresh");
+//			console.log(refreshDiv);
+//			$(contentId).prepend(refreshDiv.clone(true));
+//			refreshDiv.show();
+//			console.log("swipeDown");
+//
+//			setTimeout(function(){
+//				contents.innerHTML="";
+////				window.location.reload();
+//				var pg = renderPage(glMenu);
+//				contents.innerHTML = pg.join('');
+//				contents.querySelector(contentId).classList.add('mui-active');
+//			},700);
+//		
+//		});
+
+
+    // mui滚动刷新
+// 	 	mui('.mui-scroll-wrapper').scroll({
+//		 	deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+//		 });
+//		 mui.init({
+//		 	pullRefresh: {
+//		 			container: ".mui-scroll-wrapper",
+//		 			down: {
+//		 				callback: down
+//		 			}
+//					
+//		 		}
+//		 });
+//		 console.log(mui.init());
+//		 function down(){
+//		 	var active = $(".mui-control-item.mui-active");
+//		 	contentId = active[0].hash;
+//		 	console.log(contentId);
+//		 	var self = $(contentId);
+//		 	console.log(self);
+//		 	var ul = self[0].querySelector('.mui-table-view');
+//		 	console.log(ul);
+//		 	setTimeout(function(){
+//		 		mui(".mui-scroll-wrapper").pullRefresh().endPulldownToRefresh();
+//		 	},1500);
+//		 }
+			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios?0.003:0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: false, //是否显示滚动条
+					deceleration:deceleration
+				});
+				$.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('#segmentedControlContents .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+							down: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										//刷新代码
+//										var ul = self.element.querySelector('.mui-table-view');
+//										ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
+										self.endPullDownToRefresh();
+									}, 1000);
+								}
+							}
+						});
+					});
+				
+				});
+			})(mui);	
+		
+		 	//默认选中第一个
+//			renderPage(gelMenu);
+			controls.querySelector('.mui-control-item').classList.add('mui-active');
+			contents.querySelector('.mui-control-content').classList.add('mui-active');
+		</script>
+
+	</body>
+
+</html>

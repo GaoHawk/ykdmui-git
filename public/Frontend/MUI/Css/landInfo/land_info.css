@@ -1,0 +1,634 @@
+body {
+	background: #FFFFFF;
+	color: #666666;
+	font-size: 14px;
+	font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+}
+
+.mui-bar-tab {
+	background-color: #FFFFFF;
+}
+
+.mui-bar-tab a span {
+	display: list-item;
+}
+
+.mui-icon-left-nav,
+.mui-title,
+.mui-icon-bars {
+	color: white;
+}
+
+.mui-bar-nav {
+	background-color: #009fff;
+	top: 0;
+	-webkit-box-shadow: 0 1px 6px rgba(1,1,1,0); 
+     box-shadow: 0 1px 6px rgba(1,1,1,0); 
+}
+
+.land_info {
+	margin: 0;
+	padding: .5rem .9rem;
+	width: 100%;
+	height: 100px;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#009fff), color-stop(0.5, #009fff), color-stop(0.5, #ffffff), to(#ffffff));
+	font-size: 0;
+	-webkit-text-size-adjust: none;
+}
+
+.land_info:after {
+	display: table;
+	content: " ";
+	clear: both;
+}
+
+.land_info .land_pic {
+	display: inline-block;
+	width: 80px;
+	height: 100%;
+	float: left;
+}
+
+.land_info img {
+	max-width: 100%;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.land_info .land_describe {
+	width: calc(100% - 80px);
+	height: 100%;
+	display: inline-block;
+	position: relative;
+	float: left;
+}
+
+.land_describe_top {
+	width: 100%;
+	height: 60%;
+	font-size: 0;
+}
+
+.land_describe_top:after {
+	display: table;
+	content: " ";
+	clear: both;
+}
+
+.land_describe_bottom {
+	width: 100%;
+	height: 40%;
+	font-size: 1px;
+	margin-top: 2.5px;
+	padding-left: 3%;
+}
+
+.land_describe_top div {
+	display: inline-block;
+}
+
+.land_describe_top span {
+	font-size: 14px;
+	color: #222222;
+	position: relative;
+	top: 1.5em;
+	padding-left: .5em;
+}
+
+.land_describe_top_right {
+	font-size: 14px;
+	display: inline-block;
+	width: 60%;
+	height: 99%;
+	float: right;
+}
+
+.land_describe_top_right span {
+	margin: 0;
+	padding: 0;
+	position: static;
+	display: list-item;
+	list-style: none;
+	text-align: right;
+}
+.land_describe_top_right span.fa.fa-leaf{
+	color: rgba(250, 255, 47, 0.96);
+}
+.land_describe_bottom button {
+	margin: 0;
+	margin-right: 1px;
+	padding: .2em .2em;
+	display: inline-block;
+	width: 31.5%;
+	font-size: 10px;
+	border-radius: 12px;
+}
+.custom-boxShodow{
+    /*background: #222 url(overlay.png) repeat-x;*/
+    display: inline-block;
+    padding: 5px 10px 6px;
+    color: #fff;
+    text-decoration: none;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: .8px 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor: pointer;
+}
+.custom-btnShadow{
+    text-shadow: rgba(0,0,0,.5) 0px -1px 0px;
+    box-shadow: 0px 0px 0px 1px #007AFF inset, 0px 0px 0px 2px #0083FF inset, 0px 4px 0px 0px #4877BB, 0px 4px 0px 0px #5c768c, 0px 6px 0px 0px rgba(0,0,0,.15);
+}
+.refresh {
+	width: 100%;
+	height: calc(100% - 195px);
+	position: fixed;
+	overflow: scroll;
+}
+
+.refresh .scroll {
+	width: 100%;
+	height: auto;
+	font-size: 14px;
+}
+
+#land_info_list {
+	width: 100%;
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 50px;
+}
+
+#land_info_list p {
+	margin: 0;
+	padding: 0 .5em;
+	background: white;
+	color: orange;
+	height: 30px;
+	line-height: 30px;
+	letter-spacing: .5em;
+	border: solid 1px #dcdcdc;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+#land_info_list .title {
+	border-radius: 0;
+	border-top: 0;
+}
+
+#land_info_list .land_env {
+	background: #fff;
+}
+
+hr {
+	margin: 0;
+	padding: 0;
+}
+
+.env_top {
+	width: 100%;
+	height: 115px;
+	border: 1px solid #d7d7d7;
+	border-bottom: 0;
+	border-top: 0;
+	font-size: 0;
+	/*display: table;*/
+}
+
+.env_top:after {
+	box-sizing: border-box;
+	clear: both;
+}
+
+.env_top .hr {
+	display: inline-block;
+	width: 1px;
+	height: 100%;
+	background: #d7d7d7;
+	float: left;
+}
+
+.env_top_left,
+.env_top_right {
+	width: calc(50% - 1px);
+	height: 100%;
+	display: inline-block;
+	float: left;
+	font-size: 12px;
+}
+
+.env_top_left:after,
+.env_top_right:after {
+	box-sizing: border-box;
+	clear: both;
+}
+
+.env_top_pic {
+	width: 35%;
+	height: 100%;
+	display: inline-block;
+	padding-left: 8px;
+	padding-top: 24px;
+}
+
+.env_top_pic img,.land_env img {
+	max-width: 118%;
+	height: 60px;
+	display: inline-block;
+}
+.env_bottom_left_pic img{
+	max-width: 90%;
+	height: 80px;
+	display: inline-block;
+}
+.env_top_info ul, .env_bottom ul{
+	display: block;
+	-webkit-padding-start: 15px;
+	padding-left: 15px;
+}
+.env_top_info ul.custom-table li, .env_bottom ul li{
+	list-style: none;
+	font-size: 10px;
+	color: #999999;
+}
+.env_top_info ul.custom-table li span, .env_bottom ul li span{
+	font-size:  15px;
+	color: #666666;
+}
+.env_top_info {
+	display: inline-block;
+	width: 60%;
+	height: 100%;
+	float: right;
+}
+
+@media only screen and (min-width: 375) {
+	.env_bottom .env_bottom_right ul li span{
+		margin-right: 10px;
+	}
+}
+@media only screen and (max-width: 400) {
+	.env_bottom .env_bottom_right ul li span{
+		margin-right: 15px;
+	}
+}
+.env_bottom .env_bottom_right ul li span{
+	float: right;
+	margin-right: ;
+}
+.env_bottom .env_bottom_right ul li span:after{
+	display:block ;
+	content: ".";
+	height: 0;
+	clear: both;
+	overflow: hidden;
+	visibility: hidden;
+}
+.env_bottom {
+	width: 100%;
+	height: 260px;
+	border: solid #dcdcdc 1px;
+	border-top: 0;
+}
+
+.env_bottom:after {
+	box-sizing: border-box;
+	clear: both;
+}
+
+.env_bottom_left {
+	display: inline-block;
+	width: 50%;
+	height: 50%;
+	float: left;
+}
+
+.env_bottom_pic {
+	width: 100%;
+	height: 50%;
+}
+
+.env_bottom_pic:after {
+	box-sizing: border-box;
+	clear: both;
+}
+
+.pic_left {
+	width: 50%;
+	height: 100%;
+	float: left;
+	/*text-align: center;*/
+	padding-left: 8px;
+	padding-top: 15px;
+}
+
+.pic_right {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+.env_bottom_pic img {
+	max-width: 90%;
+	height: 70px;
+}
+
+.env_bottom__left_info {
+	width: 100%;
+	height: 50%;
+}
+
+.env_bottom_right {
+	width: 50%;
+	height: 50%;
+	float: left;
+}
+
+.env_bottom_right dl {
+	line-height: 2em;
+}
+
+.water,
+.apply_fer {
+	/*height: 30px;*/
+	float: right;
+	margin-right: 1em;
+}
+
+.pie {
+	width: 200px;
+	height: 200px;
+	background-color: gray;
+	border-radius: 100px;
+	position: absolute;
+}
+
+.pie.pie1{
+	clip: rect(0px, 200px, 200px, 100px);
+	transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	background: -webkit-gradient(radial, 100 100, 0, 100 100, 110, from(#000), to(#999));
+}
+
+.pie.pie2,.pie.pie2.pieA  {
+	clip: rect(0px, 100px, 200px, 0px);
+	transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	background: -webkit-gradient(radial, 100 100, 0, 100 100, 110, from(#000), to(#999));
+}
+
+.hold {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	z-index: 1;
+}
+
+.hold1 {
+	clip: rect(0px, 200px, 200px, 100px);
+}
+
+.hold2 {
+	clip: rect(0px, 100px, 200px, 0px);
+}
+
+.bg {
+	width: 200px;
+	height: 200px;
+	background-color: red;
+	border-radius: 100px;
+	position: absolute;
+	box-shadow: 0px 0px 8px #333;
+	background: -webkit-gradient(radial, 100 100, 0, 100 100, 110, from(#900), to(#FF0000));
+}
+
+.time {
+	width: 160px;
+	height: 160px;
+	margin: 20px 0 0 20px;
+	background-color: #fff;
+	border-radius: 100px;
+	position: absolute;
+	z-index: 1;
+	box-shadow: 0px 0px 8px #333 inset;
+	text-align: center;
+	line-height: 160px;
+	font-family: "Book Antiqua", Palatino, serif;
+	font-size: 35px;
+	font-weight: bold;
+	text-shadow: 1px 1px 3px #333;
+}
+
+.hold,
+.pie,
+.bg,
+.time {
+	transform: scale(0.4, 0.4);
+}
+
+
+.grow_right_info {
+	float: right;
+	width: 60%;
+	height: 100%;
+	font-size: 14px;
+	padding-right: 1em;
+}
+
+.env_top_info_bottom {
+	width: 100%;
+	height: 72%
+}
+
+#land_info_list .env_top_info_bottom p,
+#land_info_list .env_top_info_top p,
+#land_info_list .env_bottom_right_info div{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	line-height: 1.2em;
+	word-wrap: break-word;
+	letter-spacing: normal;
+	text-indent: 1em;
+	overflow: scroll;
+	max-height: calc(100% - 24px);
+	height: 5em;
+	color: #666666;
+	 font-size: 15px;
+	 padding-bottom: 8px;
+}
+/*不显示滚动条*/
+#land_info_list .env_top_info_bottom p::-webkit-scrollbar,
+#land_info_list .env_top_info_top p::-webkit-scrollbar,
+#land_info_list .env_bottom_right_info div::-webkit-scrollbar{
+   display: none;	
+}
+
+.env_top_info_bottom button{
+	height: 25px;
+	font-size: 1em;
+	padding: 0 .5em;
+	margin-right: 15px;
+	float: right;
+	line-height: 25px;
+}
+.env_bottom_right_info button{
+	height: 25px;
+	font-size: 1em;
+	padding: 0 .5em;
+	margin-right: 15px;
+	margin-top: 20px;
+	float: right;
+	line-height: 25px;
+}
+.env_bottom_right_info button:after{
+	display:block ;
+	content: ".";
+	height: 0;
+	clear: both;
+	overflow: hidden;
+	visibility: hidden;
+}
+.env_top_info_bottom button:after{
+	display:block ;
+	content: ".";
+	height: 0;
+	clear: both;
+	overflow: hidden;
+	visibility: hidden;
+}
+.env_bottom_left_pic button{
+	height: 25px;
+	font-size: 1em;
+	padding: 0 .5em;
+	line-height: 25px;
+}
+.env_bottom_left_pic{
+	float: left;
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+	/*text-align: center;*/
+	padding-left: 8px;
+	padding-top: 22px;
+}
+.env_bottom_right_info{
+	float: left;
+	display: inline-block;
+	height: 100%;
+	width: 70%;
+	padding-left: 1.5em;
+	padding-right: 4px;
+}
+
+/*多组建轮播框*/
+.swiper-container{
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	height: 130px;
+}
+.swiper-wrapper{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.swiper-slide{
+
+	
+	/*样式基本设置*/
+    background: #fff;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    line-height: 120px;
+    text-align: center;
+
+    /*ios 手机兼容*/
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.swiper-slide img{
+	height: 100%;
+	width: 100%;
+	background-size:cover ;
+}
+
+.custom-width{
+	/*页面宽高*/
+	width: calc(0.5*(100% - 20px));
+	margin-right: 20px;
+}
+
+/*图片点下表*/
+.swiper-pagination{
+    position: absolute;
+    text-align: center;
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    z-index: 10;
+}
+.swiper-container > .swiper-pagination{
+	bottom: 10px;
+	left: 0;
+	width: 100%;
+}
+
+.swiper-pagination-bullet{
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	border-radius: 100%;
+	background: #000;
+	opacity: .2;
+	
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active{
+	opacity: 1;
+	background: #007aff;
+}
+
+

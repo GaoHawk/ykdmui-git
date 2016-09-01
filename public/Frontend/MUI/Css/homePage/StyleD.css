@@ -1,0 +1,86 @@
+
+	#qiandao button{
+		margin-left: 4.5%;
+		margin-right: 3%;
+	}	
+	.custom-naviBtn{
+		margin-left: 7.5%;
+		transform: scale(1.1,1.1);
+	}
+		#navi{
+		height: 145px;	
+	}	
+	.custon-enterance{
+		transform: scale(1.08,1.08);
+	}
+	#board{
+		height: 110px;
+	}
+.custon-enterance:nth-child(1){
+	margin-left: 7.5%;
+}
+.custon-enterance:nth-child(1):after{
+
+	left: 101%;
+}
+.custon-enterance:nth-child(2){
+	margin-left: 5.5%;
+}
+.custon-enterance:nth-child(2):after{
+
+	left: 101%;
+}
+.custon-enterance:nth-child(3){
+	margin-left: 5.5%;
+}
+.custon-enterance:nth-child(3):after{
+
+	left: 101%;
+}
+.custon-enterance:nth-child(4){
+	margin-left: 6.5%;
+	bottom: 0;
+}
+#forSale{
+	margin-top: 2%;
+	height: 120px;
+}
+#forSale div.custom-show{
+	margin-top: 14px;
+transform: scale(1.15,1.15);
+	right: 14px;
+
+}
+div.custom-show .showImage{
+	background-position: 58px 0;
+}
+
+li.custom-row1 div:nth-child(1){
+	transform: scale(1.1,1.1);
+	position: relative;
+	bottom: 8px;
+	margin-left: 3px;
+	margin-right: 4px;
+}
+li.custom-row1 div:nth-child(2){
+	transform: scale(1.1,1.1);
+	margin-left: 6px;
+	margin-top: 2.5px;
+}
+
+li.custom-row2 div:nth-child(1){
+	transform: scale(1.1,1.1);
+	/*margin-top: 3px;*/
+	margin-left: 4px;
+	
+}
+.custom-horn li:nth-child(1){
+	transform: scale(1.32,1.32);
+	margin-left: 19px;
+	top: 1px;
+}
+.custom-horn li:nth-child(2){
+	font-size: 14px;
+	left: 144px;
+
+}

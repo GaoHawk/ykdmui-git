@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">    
+   <title></title>
+    <script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>
+    <link href="../../../../public/Frontend/MUI/Css/Style.css" rel="stylesheet"/>
+
+    <style>
+		li{
+			list-style: none;
+			display: inline-block;
+		}
+		.custom-slider{
+			padding: 0;
+			box-sizing: border-box;
+			width: 185px;
+			background-color: #C0C0C0;
+			border-radius: 11.5%;
+			/*line-height: 71px;*/
+		}
+		.custom-slider li{
+			margin: 0;
+			padding: 2px 0;
+			/*height: 100%;*/
+			display: inline-block;
+			font-size: 0;
+		}
+		/*.custom-slider:after{
+			position: relative;
+			bottom: 15px;
+			content: '\e470';
+		}
+		.custom-slider:before{
+			position: relative;
+			bottom: 15px;
+			content: '\e471';
+			
+		}*/
+		.custom-slider span{
+			color: white;
+			position: relative;
+			bottom: 15px;
+		}
+
+    </style>
+</head>
+<body>
+	<ul class="custom-slider mui-icon ">
+		<span class="mui-icon mui-icon-back"></span>
+		<li class="cuastom-page1">
+			<img src="../images/lvyecai.png" />
+			<img src="../images/malingshu_2.png" />
+		</li>
+		<span class="mui-icon mui-icon-forward"></span>
+	</ul>
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init();
+    </script>
+</body>
+</html>

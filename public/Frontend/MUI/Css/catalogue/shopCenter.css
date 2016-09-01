@@ -1,0 +1,136 @@
+.backColor{
+    background-color: rgb(55, 165, 255);
+}
+.backColor h1.mui-title{
+	color: white;
+}
+.backColor a.mui-action-back{
+	color: white;
+}
+.backColor a.mui-icon.mui-icon-search{
+	color: white;
+}
+.mui-tab-item .name{
+	font-size:13px ;
+}
+.mui-tab-item .custom-badge{
+	transform: scale(0.74,0.74);
+	position: absolute;
+	background-color: red;
+	color: white;
+	top: 1px;
+	left: 122px;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted.mui-segmented-control-vertical 
+.mui-control-item.mui-active{
+	color: grey;
+	z-index: 990;
+	border-right: 1px solid white;
+	left: 2%;
+}
+.mui-control-item{
+	
+	height: 45px;
+	position: relative;
+}
+.mui-control-item i{
+	display: inline-block;
+	position: relative;
+	transform: scale(1.2,1.2);
+	bottom: 1px;
+}
+.mui-control-item span{
+	display: inline-block;
+	position: relative;
+	bottom: 3px;
+	font-size:10px ;
+	transform: scale(0.93,0.93);
+}
+.custom-icon{
+	
+	background-repeat:no-repeat ;
+	left: auto;
+	right: 10px;
+	width: 18px;
+	height: 18px;
+	background-image: url(../../../../../resources/views/Frontend/images/icon-2.png);
+	background-position: 0 -63px;
+}
+
+/*目录下子项样式*/
+
+.mui-control-content.mui-active{
+	background-color: white;
+}
+.custom-view-cell-fenlei{
+	padding-top: 5px;
+	border-bottom: 0.5px solid gainsboro;
+	width: 80%;
+}
+.custom-view-cell-fenlei span{
+	font-size: 10px;
+	display: inline-block;
+	position: relative;
+	right: 4px;
+	top: 2px;
+	color: darkgray;
+	transform: scale(0.75,0.75);
+}
+.mui-table-view:after{
+	display: none;
+}
+.custom-img{
+	display: table-cell;
+	box-sizing: border-box;
+	vertical-align: middle;
+	text-align: center;
+	margin-left: 3.3px;
+	margin-top: 6px;
+	display: inline-block;
+	height: 69px;
+	border: 0.4px solid rgba(128, 128, 128, 0.37);
+	width: 23.5%;
+}
+.custom-view-img{
+	margin-top:3px ;
+	display: inherit;
+	width: 85%;
+	background-size: 50px 54px;
+	height: 47px;
+background-repeat:no-repeat ;
+}
+@media only screen and (min-width:375px ) {
+	.custom-view-img{
+		margin: 4px;
+		background-size:cover ;
+		height: 51px;
+	}
+	.custom-img{
+		height: 75px;
+	}
+	.custom-img span{
+		top: -10px;
+	}
+}
+.custom-img:nth-child(1) .custom-view-img{
+	/*background-image: url(../../../../resources/views/Frontend/images/luobu.png);*/
+	
+}
+.custom-img:nth-child(2) .custom-view-img{
+	/*background-image: url(../../../../resources/views/Frontend/images/hongshu-1.png);*/
+}
+.custom-view-cell-img{
+	height: 25%;
+}
+.custom-img span{
+	position: relative;
+	width: 100%;
+	display: inline-block;
+	bottom: 7px;
+	text-align: center;
+	transform: scale(0.82,0.82);
+	font-size: 10px;
+	color: gray;
+}
+

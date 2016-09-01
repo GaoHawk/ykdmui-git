@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">    
+   <title></title>
+    <script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>
+    <link href="../../../../public/Frontend/MUI/Css/Style.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../../../../public/Frontend/MUI/Js/jQuery-2.2.1.min.js" ></script>
+	<script src="../../../../public/Frontend/MUI/Js/Plugins/echarts.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body style="height: 100%;margin: 0;">
+	<div id="container" style="height: 40%;"></div>
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init();
+      	
+  	   	var dom = document.getElementById("container");
+      	var myChart = echarts.init(dom);
+      	var app = {};
+      	option = null;
+      	var data = [];
+      	var phValue = 8;
+      	
+      	option = {
+	    tooltip : {
+	        formatter: "{a} <br/>{c} {b}"
+	    },
+	    toolbox: {
+	        show: true,
+	        feature: {
+	            restore: {show: true},
+	            saveAsImage: {show: true}
+	        }
+	    },
+	    series : [
+	        {
+	            name: 'ph值',
+	            type: 'gauge',
+	            z: 3,
+	            min: 0,
+	            max: 14,
+	            splitNumber: 7,
+	            radius: '45%',
+	            startAngle: 155,
+	            endAngle: 25,
+	            axisLine: {     // 坐标轴线
+	                lineStyle: {       // 属性lineStyle控制线条样式
+	                    width: 3,
+	                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+        				shadowBlur: 3,
+        				color:[[0.3,'#4FEBEC'],[0.8,'#99BD0D'],[1,'#F55631']]
+	                }
+	            },
+	            axisTick: {            // 坐标轴小标记
+	                length: 7,   // 属性length控制线长
+	                splitNumber:2,
+	                lineStyle: {       // 属性lineStyle控制线条样式
+	                    color: 'auto'
+	                }
+	            },
+	            splitLine: {           // 分隔线
+	                length: 9,         // 属性length控制线长
+	                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+	                    color: 'auto'
+	                }
+	            },
+	            title : {
+	                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+	                    fontWeight: 'bolder',
+	                    fontSize: 14,
+	                    fontStyle: 'italic'
+	                },
+	             
+	            },
+	            pointer:{
+	            	width:3
+	         
+	            },
+	            detail : {
+	            	formatter:function(value){
+	            		if(value <7){
+	            			return "碱性";
+	            		}else if(value == 7){
+	            			return "中性";
+	            		}else if(value > 7){
+	            			return "酸性";
+	            		}
+	            	},
+	            	offsetCenter: [0, '25%'],
+	                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+	                    fontWeight: 'bolder',
+	                    fontSize: 19
+	                },
+                  	 
+	            },
+	            data:[{value: 8, name: 'ph值' + phValue}]
+	        },
+	        {
+	            name: '水分',
+	            type: 'gauge',
+	            center: ['20%', '50%'],    // 默认全局居中
+	            radius: '45%',
+	            min:0,
+	            max:15,
+	            startAngle:155,
+	            endAngle:25,
+	            splitNumber:5,
+	            axisLine: {            // 坐标轴线
+	                lineStyle: {       // 属性lineStyle控制线条样式
+	                    width: 4,
+	                    color:[[0.2,'#A8E6DB'],[0.4,'#6CDCE2'],[0.6,'#6DE6DC'],[0.8,'#27ADE2'],[1,'#0080DE']]
+	                }
+	            },
+	            axisTick: {            // 坐标轴小标记
+	                length:7, 
+	                splitNumber:3 ,// 属性length控制线长
+	                lineStyle: {       // 属性lineStyle控制线条样式
+	                    color: 'auto'
+	                }
+	            },
+	            splitLine: {           // 分隔线
+	                length:9,         // 属性length控制线长
+	                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+	                    color: 'auto'
+	                }
+	            },
+	            pointer: {
+	                width:5
+	            },
+	            title: {
+	                offsetCenter: [0, '-35%'], // x, y，单位px
+	                textStyle:{
+	                	fontSize:12
+	                }
+	            },
+	            detail: {
+	                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+	                    fontWeight: 'bolder',
+	                    fontSize: 16
+	                },
+	                offsetCenter: [0, '25%'],
+	                formatter:function(value){
+	            		if(value <3){
+	            			return "水分不足";
+	            		}else if(value  <= 10 && value >=3){
+	            			return "水分充足";
+	            		}else if(value > 10){
+	            			return "过饱和";
+	            		}
+	            	}
+	            },
+	            data:[{value: 4, name: '水分含量'}]
+	        }
+	        
+	    ]
+	};
+	
+	 myChart.setOption(option,true);
+//	app.timeTicket = setInterval(function (){
+//	    option.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
+//	    option.series[1].data[0].value = (Math.random()*7).toFixed(2) - 0;
+//	    option.series[2].data[0].value = (Math.random()*2).toFixed(2) - 0;
+//	    option.series[3].data[0].value = (Math.random()*2).toFixed(2) - 0;
+//	    myChart.setOption(option,true);
+//	},2000);
+      	
+    </script>
+</body>
+</html>

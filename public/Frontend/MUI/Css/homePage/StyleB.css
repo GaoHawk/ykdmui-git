@@ -1,0 +1,74 @@
+	#qiandao button{
+		background-color: green;
+		margin-left: 5.5%;
+		margin-right: 2%;
+	}	
+	.custom-naviBtn{
+		margin-left: 7.8%;
+		transform: scale(1.12,1.12);
+	}	
+	#navi{
+		height: 150px;	
+	}	
+	.custon-enterance{
+		transform: scale(1.1,1.1);
+	}
+	#board{
+		height: 110px;
+	}
+
+.custon-enterance:nth-child(1){
+	
+	margin-left: 8%;
+}
+.custon-enterance:nth-child(1):after{
+	
+	left: 110%;
+}
+.custon-enterance:nth-child(2){
+	margin-left: 6.5%;
+}
+.custon-enterance:nth-child(2):after{
+	    border-right: 1px solid rgba(128, 128, 128, 0.44;
+	left: 115%;
+}
+.custon-enterance:nth-child(3){
+	margin-left: 8.5%;
+}
+.custon-enterance:nth-child(3):after{
+	    border-right: 1px solid rgba(128, 128, 128, 0.38);
+	
+	left: 108%;
+}
+.custon-enterance:nth-child(4){
+	bottom: 0;
+	margin-left: 4%;
+}
+
+#forSale{
+	height: 120px;
+}
+#forSale div.custom-show{
+	margin-top: 14px;
+transform: scale(1.18,1.18);
+	right: 10px;
+
+}
+div.custom-show .showImage{
+	background-position: 62px 0;
+}
+
+li.custom-row1 div:nth-child(1){
+	position: relative;
+	bottom: 4px;
+	margin-right: 4px;
+}
+
+li.custom-row2 div:nth-child(1){
+	margin-top: 3px;
+	margin-left: 3px;
+	
+}
+.custom-horn li:nth-child(2){
+	right: 10px;
+}

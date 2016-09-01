@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">    
+   <title></title>
+   <link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Style.css">
+    <link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Other.css">
+    <script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>
+    <script src="../../../../public/Frontend/MUI/Js/jQuery-2.2.1.min.js"></script>
+    <link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/Font.css" />
+ <link rel="stylesheet" href="../../../../public/Frontend/MUI/Css/product/productDetail.css" />
+    <style>
+
+    li.mui-table-view-cell{
+    	background-color: #fff;
+    	margin-top: 8px;
+    	
+    }
+
+    ul.mui-table-view{
+    	background-color: #EFEFF4;
+    }
+
+
+    </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav backColor">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
+    <h1 class="mui-title">商品评价</h1>
+    <a class="mui-icon mui-icon-bars mui-pull-right"  href="#topPopover">
+
+    </a>
+</header>
+<footer class="mui-bar mui-bar-footer" style="display: ;">
+    <nav class="mui-bar mui-bar-tab">
+        <a class="mui-tab-item" href="http://www.baidu.com">
+            <span class="iconfont">&#xe66e;</span>
+            <span class="mui-tab-label">关注</span>
+        </a>
+        <a class="mui-tab-item" href="#tabbar-with-chat" id="collection">
+            <span class="iconfont" style="">&#xe666;<span class="mui-badge" style="">9</span></span>
+            <span class="mui-tab-label" style="">购物车</span>
+        </a>
+        <a class="mui-tab-item" href="#tabbar-with-contact">
+            <div class="name">加入购物车</div>
+        </a>
+        <a class="mui-tab-item" href="#tabbar-with-map">
+            <div class="name">立即购买</div>
+        </a>
+    </nav>
+</footer>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+					    <div class="user_info">
+	                        <img src="http://m.51ykd.com/Frontend/MUI/Image/Logo.jpg" alt="">
+	                        <div>
+	                            <p class="userName">fengshuai</p>
+	                        </div>
+	                    </div>
+	                    <p class="evaluate_detail">
+	                        很好很不错非常棒
+	                    </p>
+					</li>
+					<li class="mui-table-view-cell">
+					    <div class="user_info">
+	                        <img src="http://m.51ykd.com/Frontend/MUI/Image/Logo.jpg" alt="">
+	                        <div>
+	                            <p class="userName">fengshuai</p>
+	                        </div>
+	                    </div>
+	                    <p class="evaluate_detail">
+	                        很好很不错非常棒
+	                    </p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	<script src="../../../../public/Frontend/MUI/Js/product/pro-navbar.js"></script>	
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init({
+      		pullRefresh:{
+      			container: '#pullrefresh',
+      			up:{
+      				contentrefresh: '正在加载...',
+      				callback: pullupRefresh
+      			},
+      		}
+      	});
+//    	组织下拉
+      	var content = $('#pullrefresh');
+      	var scroll = $('.mui-scroll');
+      	content.on('drag',function(){
+      		console.log("drag");	
+      		console.log(scroll.css('transform'));
+      		var matrix = scroll.css('transform');
+			var str = matrix.split(',');
+			console.log(typeof str[5]);
+			var transY = str[5].slice(0,str[5].length-1);
+			console.log(transY);
+			if(parseInt(transY) > 0){
+				scroll.css({
+					transform: "translate3d(0,0,0)",
+					transitionTimingFunction: ""
+				});
+			}
+      	});
+      	var count = 0;
+      	function pullupRefresh() {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+				var table = document.body.querySelector('.mui-table-view');
+				var cells = document.body.querySelectorAll('.mui-table-view-cell');
+				for (var i = cells.length, len = i + 20; i < len; i++) {
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell';
+					li.innerHTML = '<div class="user_info"><img src="http://m.51ykd.com/Frontend/MUI/Image/Logo.jpg" alt=""><div><p class="userName">fengshuai</p></div></div><p class="evaluate_detail">很好很不错非常棒</p>';
+					table.appendChild(li);
+				}
+			}, 1500);
+		}
+		if (mui.os.plus) {
+			mui.plusReady(function() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				}, 1000);
+
+			});
+		} else {
+			mui.ready(function() {
+				mui('#pullrefresh').pullRefresh().pullupLoading();
+			});
+		}
+    </script>
+</body>
+</html>

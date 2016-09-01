@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">    
+   <title></title>
+    <script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>
+	<script src="../../../../public/Frontend/MUI/Js/jQuery-2.2.1.min.js"></script>
+    <link href="../../../../public/Frontend/MUI/Css/Style.css" rel="stylesheet"/>
+	<link href="../../../../public/Frontend/MUI/Css/Other.css" rel="stylesheet"/>
+
+    <style>
+		.mui-card .mui-control-content {
+			padding: 10px;
+		}
+		.mui-control-content {
+			height: 150px;
+		}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav backColor" >
+
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">个人中心</h1>
+		<a id="icon-menu" class="mui-icon mui-icon-bars mui-pull-right"></a>
+	</header>
+	<ul class="mui-table-view custom-userInfo" style="height: 100px;">
+		<li class="mui-table-view-cell mui-media">
+			<div class="custom-avatar ">
+				<img src="COS_gray@3x.png"></img>
+				<div class="custom-accontName">13348909</div>
+				<div class="custom-userLV">游客</div>
+			  <div class="mui-navigate-right">
+                </div>
+              <a href="#" class="custome-after">账号管理</a>
+			</div>
+			
+		</li>
+	</ul>
+	<div class="mui-content" style="padding-top: 4px;">
+		<div style="padding: 10px 10px ;">
+			 <div id="segmentedControl" class="mui-segmented-control">	
+				<a class="mui-control-item" href="#item1">
+					文章收藏
+				</a>
+						<a class="mui-control-item" href="#item2">
+					食品收藏
+				</a>
+			</div>
+		</div>
+		<div>
+			<div id="item1" class="mui-control-content mui-active">
+				<div id="scroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+									第一个选项卡子项-1
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-2
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-3
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-4
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-5
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-6
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-7
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-8
+								</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="item2" class="mui-control-content">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							第二个选项卡子项-1
+						</li>
+						<li class="mui-table-view-cell">
+							第二个选项卡子项-2
+						</li>
+						<li class="mui-table-view-cell">
+							第二个选项卡子项-3
+						</li>
+					</ul>
+			</div>
+		</div>
+	
+	
+	<!--<script src="../../../../public/Frontend/MUI/Js/userCenter.js"></script>-->
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init({
+      		swipeBack: true
+      	});
+		(function($) {
+			$('#scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			var segmentedControl = document.getElementById('segmentedControl');
+			$('.mui-input-group').on('change', 'input', function() {
+				if (this.checked) {
+					var styleEl = document.querySelector('input[name="style"]:checked');
+					var colorEl = document.querySelector('input[name="color"]:checked');
+					if (styleEl && colorEl) {
+						var style = styleEl.value;
+						var color = colorEl.value;
+						segmentedControl.className = 'mui-segmented-control' + (style ? (' mui-segmented-control-' + style) : '') + ' mui-segmented-control-' + color;
+					}
+				}
+			});
+		})(mui)
+      	
+    </script>
+</body>
+</html>

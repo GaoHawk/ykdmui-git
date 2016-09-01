@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../../public/Frontend/MUI/Css/Style.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="../../../../public/Frontend/MUI/Css/buySeed/buySeed.css" />
+		<style>
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 150px;
+			}
+			/*跨webview需要手动指定位置*/
+			
+			#topPopover {
+				position: fixed;
+				top: 16px;
+				right: 6px;
+			}
+			
+			#topPopover .mui-popover-arrow {
+				left: auto;
+				right: 6px;
+			}
+			
+			.mui-popover {
+				min-height: 400px;
+			}
+			
+			.mui-scroll-wrapper {
+				min-height: 400px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">标题</h1>
+		</header>
+		<div class="mui-input-row mui-search" style="margin-top: 44px;">
+			<input type="search" class="mui-input-clear" placeholder="">
+		</div>
+		<div class="mui-segmented-control mui-segmented-control-inverted">
+			<a class="mui-control-item mui-active" href="#item1">适宜</a>
+			<a class="mui-control-item" href="#item2">普通</a>
+			<a class="mui-control-item" href="#item3">有可能</a>
+			<a class="mui-control-item" href="#item4">困难</a>
+		</div>
+		<div>
+			<div id="item1" class="mui-control-content mui-active">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll" style="height: 100%;">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<div class="seedPic">
+									<img src="../zhongzhi/COS_gray@3x.png" />
+									<!--<button type="button" class="mui-btn mui-btn-grey buySeed">购买</button>-->
+									<a href="#middlePopover" class="mui-btn mui-btn-grey buySeed">购买</a>
+								</div>
+								<div class="seedInfo">
+									<p class="seedName">小麦种子</p>
+									<i class="seedState">在库</i>
+									<i class="seedPrice">￥1.50</i>
+									<div class="infoLeft">
+										<p class="p1">使用时效</p>
+										<p class="p2">预计收获日期</p>
+										<p class="p3">预计收获量</p>
+										<p class="p4">单位用量</p>
+									</div>
+									<div class="infoRight">
+										<p class="useTime">购入后7日内</p>
+										<p class="reapDay">约80日</p>
+										<p class="reapNum">20~50株</p>
+										<p class="useNum">150~200g</p>
+									</div>
+									<button type="button" class="mui-btn mui-btn-grey info">详情</button>
+								</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div class="seedPic">
+									<img src="../zhongzhi/COS_gray@3x.png" />
+									<!--<button type="button" class="mui-btn mui-btn-grey buySeed">购买</button>-->
+									<a href="#middlePopover" class="mui-btn mui-btn-grey buySeed">购买</a>
+								</div>
+								<div class="seedInfo">
+									<p class="seedName">小麦种子</p>
+									<i class="seedState">在库</i>
+									<i class="seedPrice">￥1.50</i>
+									<div class="infoLeft">
+										<p class="p1">使用时效</p>
+										<p class="p2">预计收获日期</p>
+										<p class="p3">预计收获量</p>
+										<p class="p4">单位用量</p>
+									</div>
+									<div class="infoRight">
+										<p class="useTime">购入后7日内</p>
+										<p class="reapDay">约80日</p>
+										<p class="reapNum">20~50株</p>
+										<p class="useNum">150~200g</p>
+									</div>
+									<button type="button" class="mui-btn mui-btn-grey info">详情</button>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="item2" class="mui-control-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">2</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="item3" class="mui-control-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">3</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="item4" class="mui-control-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">4</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="middlePopover" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<div class="main">
+						<div class="left">
+							<img src="../zhongzhi/COS_gray@3x.png" />
+						</div>
+						<div class="right">
+							<p class="seedName">小麦种子</p>
+							<p>商品文字介绍商品文字介绍商品文字介绍商品文字介绍商品文字介绍商品文字介绍商品文字介绍商品文字介绍</p>
+							<div class="rightMain">
+								<div class="infoLeft2">
+									<p class="p1">使用时效</p>
+									<p class="p2">预计收获日期</p>
+									<p class="p3">预计收获量</p>
+									<p class="p4">单位用量</p>
+								</div>
+								<div class="infoRight2">
+									<p class="useTime">购入后7日内</p>
+									<p class="reapDay">约80日</p>
+									<p class="reapNum">20~50株</p>
+									<p class="useNum">150~200g</p>
+								</div>
+							</div>
+							<div class="mui-numbox" data-numbox-min='0' data-numbox-max='100'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input id="test" class="mui-input-numbox" type="number" value="1" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+							<p class="buyBtn">
+								<button type="button" class="mui-btn mui-btn-red">购买</button>
+								<button id="backMenu" type="button" class="mui-btn mui-btn-grey" style="margin-left: 20px;">取消</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../../../../public/Frontend/MUI/Js/MUI.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../../public/Frontend/MUI/Js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui('.mui-scroll-wrapper').scroll({
+				deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			var buySeed = document.getElementsByClassName("buySeed");
+			buySeed[0].addEventListener('tap', function() {
+				location.href = '#middlePopover';
+			});
+			var body=document.getElementsByTagName("body");
+			var backMenu=document.getElementById("backMenu");
+			var mui_backdrop=document.getElementsByClassName("mui-backdrop mui-active");
+			backMenu.addEventListener('tap',function(){
+				document.getElementById("middlePopover").style.display='none';
+				body[0].removeChild(mui_backdrop[0]);
+				$(document.getElementById("middlePopover")).removeClass("mui-active");
+			});
+		</script>
+	</body>
+
+</html>

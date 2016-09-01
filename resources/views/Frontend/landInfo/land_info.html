@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../../../public/Frontend/MUI/Css/MUI.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../../../public/Frontend/MUI/Css/Plugins/font-awesome-4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../public/Frontend/MUI/Css/landInfo/land_info.css" />
+		<link href="../../../../public/Frontend/MUI/Css/landInfo/Font2.css" rel="stylesheet"/>
+		<link href="../../../../public/Frontend/MUI/Css/Other.css" rel="stylesheet"/>
+		<style>
+			ul{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				max-width: 100%;
+				border: 0;
+				vertical-align: top;
+			}
+			.sx-table-row{
+				position: relative;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				border: 0;
+				border-collapse: collapse;
+				display: table;
+				table-layout: fixed;
+				margin-right: 20px;
+			}
+			.sx-table-pic{
+				min-width: 85px;
+				width: 85px;
+			}
+			.sx-table-pic .sx-product-image{
+				/*max-width: 100%;*/
+				max-height: 130px;
+				height: auto;
+				padding: 0;
+				margin: 0;
+				border: 0;
+			}
+
+			.sx-table-detail{
+				width:60%;
+				padding: 0 0 0 12px;
+				margin: 0;
+				border: 0;
+				border-collapse: collapse;
+				display: table-cell;
+			}
+			@media only screen and (min-width:320px ) {
+				.sx-table-pic{
+					width: 100px;
+				}
+				.land_env img{
+					max-width: 110%;
+				}
+				.sx-table-pic .sx-product-image{
+					height: 72px;
+				}
+				.sx-table-detail{
+					width: 65%;
+				}
+			}
+			
+			@media only screen and (min-width:360px ) {
+				.sx-table-pic{
+					width: 110px;
+				}
+			}
+			@media only screen and (min-width:375px ) {
+				.sx-table-pic{
+					width: 118px;
+				}
+			}
+			.sx-table-pic .sx-product-image {
+				max-height: 170px;
+			}
+			.custom-resume{
+				letter-spacing: .5em;
+			}	
+			.sx-title{
+				height: 24px;line-height: 14px;color: #222;font-weight: 500;font-size: 1rem!important;
+			}
+			.sx-expiry{
+				height: 24px;line-height:27px;color: #666;font-size: 0.85rem!important;
+			}
+			.sx-date{
+				height:24px;white-space:nowrap;overflow: hidden;text-overflow: ellipsis;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="box-shadow: 0 0px 0px rgba(0,0,0,0);">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">标题</h1>
+		</header>
+		<nav id="nav_bar" class="mui-bar mui-bar-tab">
+			<a id="1" class="mui-tab-item mui-active">
+				<span class="fa fa-home"></span>
+				<span class="mui-tab-label">环境</span>
+			</a>
+			<a id="2" class="mui-tab-item">
+				<span class="fa fa-leaf"></span>
+				<span class="mui-tab-label">周期</span>
+			</a>
+			<a id="3" class="mui-tab-item">
+				<span class="fa fa-heart"></span>
+				<span class="mui-tab-label">健康</span>
+			</a>
+			<a id="4" class="mui-tab-item">
+				<span class="fa fa-gears"></span>
+				<span class="mui-tab-label">设施</span>
+			</a>
+		</nav>
+		<div class="mui-content mui-fullscreen">
+			<div class="land_info">
+				<div class="land_pic custom-avatar">
+					<img src="../images/muwu.jpg" />
+				</div>
+				<div class="land_describe">
+					<div class="land_describe_top">
+						<span>作物名称</span>
+						<div class="land_describe_top_right">
+							<span>播种方式</span>
+							<span class="fa fa-leaf">幼苗期</span>
+						</div>
+					</div>
+					<div class="land_describe_bottom">
+						<button type="button" class="mui-btn mui-btn-yellow custom-boxShodow">农事安排</button>
+						<button type="button" class="mui-btn mui-btn-yellow custom-boxShodow">种植履历</button>
+						<button type="button" class="mui-btn mui-btn-blue custom-boxShodow">实景图像</button>
+					</div>
+				</div>
+			</div>
+			<div class="refresh">
+				<div class="scroll">
+					<div id="land_info_list">
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../../../public/Frontend/MUI/Js/jQuery-2.2.1.min.js"></script>
+		<script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>
+		<script src="../../../../public/Frontend/MUI/Js/landInfo/laytpl.js"></script>
+		<script src="../../../../public/Frontend/MUI/Js/Plugins/echarts.min.js"></script>		
+		<script src="../../../../public/Frontend/MUI/Js/landInfo/plugin.js"></script>
+		<script src="../../../../public/Frontend/MUI/Js/landInfo/layer.min.js"></script>
+			
+		<!--//模版文件-->
+		<script type="text/html" id="land_tpl">
+			<<# if(d[0]==1){>>
+				<p><span class="fa fa-html5"></span><span><< d[1].title[0] >></span></p>
+				<div class="land_env">
+					<div class="env_top">
+						<div class="env_top_left">
+							<div class="env_top_pic">
+								<img src="../images/shuijiao.jpg"/>
+							</div>
+							<div class="env_top_info">
+								<ul class="custom-table">
+									<li>空气状况</li>
+									<li>温度：<span><< d[1].air_temp >></span></li>
+									<li>湿度：<span><< d[1].hnm >></span></li>
+									<li>露点：<span><< d[1].dew >></span></li>
+								</ul>
+							</div>
+						</div>
+						<span class="hr"></span>
+						<div class="env_top_right">
+							<div class="env_top_pic">
+								<img src="../images/shuijiao.jpg"/>
+							</div>
+							<div class="env_top_info">
+								<ul class="custom-table">
+									<li>光照</li>
+									<li><span><< d[1].illum >></span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="env_bottom">
+						<div class="env_bottom_left">
+							<div class="env_bottom_pic">
+								<div class="pic_left">
+									<img src="../images/cbd.jpg"/>
+								</div>
+								<div class="pic_right">
+									<ul class="custom-table" style="padding-left: 30%;">
+										<li>土壤温度</li>
+										<li><span><< d[1].land_temp >></span></dt>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+						<div class="env_bottom_right">
+							<ul style="padding-left:28% ;padding-right: 10%;">
+								<li >氮：<span style=""><< d[1].org.N >></span></li>
+								<li>磷：<span style=""><< d[1].org.P >></span></li>
+								<li>钾：<span style=""><< d[1].org.K >></span></li>
+								<li>其他：<span style=""><< d[1].org.M >></span></li>
+							</ul>	
+						</div>
+						<div class="env_bottom__left_info">
+							<div id="container1" style="height: 120px;width: 47%;display: inline-block;"></div>
+							<div id="container2" style="height: 120px;width: 47%;display: inline-block;"></div>
+						</div>
+					</div>
+				</div>
+				<p style="border-radius: 0;height: 43px;padding-top: 2px;">
+					<button type="button" class="mui-btn mui-btn-blue water custom-btnShadow">浇水</button>
+					<button type="button" class="mui-btn mui-btn-blue apply_fer custom-btnShadow">施肥</button>
+				</p>
+			<<# }else if(d[0]==2){>>
+				<p><span class="fa fa-html5"></span><span><< d[1].title[1] >></span></p>
+				<div class="land_env">
+					<div class="env_top">
+						<span style="font-size: 1rem;position: relative;top: .5rem;left: 1rem;">成熟度</span>
+						<div class="hold hold1">
+						<div class="pie pie1"></div>
+						</div>
+						<div class="hold hold2">
+							<div class="pie pie2"></div>
+						</div>
+						<div class="bg"></div>
+						<div class="time"> <span></span></div>
+						<div class="grow_right_info">
+							<dl>
+								<dd>今天可采摘：3斤</dd>
+								<dd>明天可采摘：4斤</dd>
+							</dl>
+							<button style="float: right;" type="button" class="mui-btn mui-btn-red">去采收</button>
+						</div>
+					</div>
+					<hr>
+					<div class="env_bottom">
+						<div id="container" style="height: 200px;width: 100%;"></div>
+					</div>
+				</div>
+			<<# }else if(d[0]==3){>>
+				<p><span class="fa fa-html5"></span><span><< d[1].title[2] >></span></p>
+				<p class="title"><span class="fa fa-leaf"></span>种植数<< d[1].sowNum >>&nbsp;当前成活<< d[1].isLive >></p>
+				<div class="land_env">
+					<div class="env_top">
+						<div class="env_top_left">
+							<div class="env_top_pic">
+								<img src="../images/shuijiao.jpg"/>
+							</div>
+							<div class="env_top_info" style="padding-left: 10px;">
+								<div class="env_top_info_bottom">
+									<h5 style="text-align: center;">病害标题</h5>
+									<p style="">范德萨发发颠峰</p>
+									<button type="button" class="mui-btn mui-btn-blue custom-btnShadow">病害治理</button>
+								</div>
+							</div>
+						</div>
+						<span class="hr"></span>
+						<div class="env_top_right">
+							<div class="env_top_pic">
+								<img src="../images/shuijiao.jpg"/>
+							</div>
+							<div class="env_top_info" style="padding-left: 10px;">
+								<div class="env_top_info_bottom">
+									<h5 style="text-align: center;">虫害标题</h5>
+									<p class="custom-preScroll">范德萨发发颠峰范德萨发发颠峰范德萨发发颠峰</p>
+									<button type="button" class="mui-btn mui-btn-blue custom-btnShadow">虫害治理</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="env_bottom" style="height: 160px;">
+						<div class="env_bottom_left_pic">
+							<img src="../images/yuantiao.jpg"/>
+							
+						</div>
+						<div class="env_bottom_right_info">
+							<h5 style="text-align: center;">杂草程度标题</h5>
+							<div >放大放大的反对撒反对撒发撒反对撒法撒旦法撒旦发射</div>
+							<button type="button" class="mui-btn mui-btn-blue custom-btnShadow">除草</button>
+						</div>
+					</div>
+				</div>
+			<<# }else if(d[0]==4){>>
+				<p><span class="fa fa-html5"></span><span><< d[1].title[3] >></span></p>
+				<div class="land_env" style="padding: 0 .5em; border: solid 1px #dcdcdc;border-top:0;">
+			     	
+			     	 <!--<div class="content-block-title">作物详情实时图片</div>-->
+		              <div class="swiper-container swiper-2" style="">
+		                <div class="swiper-pagination">
+		                	<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+		                	<span class="swiper-pagination-bullet"></span>
+		                	<span class="swiper-pagination-bullet"></span>
+		                	<span class="swiper-pagination-bullet"></span>
+		                	<span class="swiper-pagination-bullet"></span>
+		                	<span class="swiper-pagination-bullet"></span>
+		                	<span class="swiper-pagination-bullet"></span>
+		                	<span class="swiper-pagination-bullet"></span>
+		                	<span class="swiper-pagination-bullet"></span>
+		         
+		                </div>
+		                <div class="swiper-wrapper" style="transition-duration: 0ms;transform: translate3d(0px, 0px, 0px);">
+		                  <div class="sx-table-row">
+		                  	<div class="sx-table-pic">
+		                  		<div class="sx-table-image-holder">
+		                  			 <img class="sx-product-image" src="../../../../public/Frontend/MUI/Image/c05dfaaf4cc8b993415e45ae333c5576.jpg" />
+		                  		</div>
+		                  	</div>
+		                  	<div class="sx-table-detail">
+		                  		<h5 class="sx-title" >
+		                  			田垄御寒防护措施，防寒布，30平米
+		                  		</h5>
+		                  		<div class="sx-expiry" >
+		                  			<span class="a-size-small">使用时期:冬季</span>
+		                  		</div>
+		                  		<div class="sx-date" >
+		                  			起止日期: 4月5号 至 6月23号
+		                  		</div>
+		                  	</div>
+		                  </div>
+		                   <div class="sx-table-row">
+		                  	<div class="sx-table-pic">
+		                  		<div class="sx-table-image-holder">
+		                  			 <img class="sx-product-image" src="../../../../public/Frontend/MUI/Image/c05dfaaf4cc8b993415e45ae333c5576.jpg" />
+		                  		</div>
+		                  	</div>
+		                  	<div class="sx-table-detail">
+		                  		<h5 class="sx-title" >
+		                  			田垄御寒防护措施，防寒布，30平米
+		                  		</h5>
+		                  		<div class="sx-expiry" >
+		                  			<span class="a-size-small">使用时期:冬季</span>
+		                  		</div>
+		                  		<div class="sx-date" >
+		                  			起止日期: 4月5号 至 6月23号
+		                  		</div>
+		                  	</div>
+		                  </div>
+                          <div class="sx-table-row">
+		                  	<div class="sx-table-pic">
+		                  		<div class="sx-table-image-holder">
+		                  			 <img class="sx-product-image" src="../../../../public/Frontend/MUI/Image/c05dfaaf4cc8b993415e45ae333c5576.jpg" />
+		                  		</div>
+		                  	</div>
+		                  	<div class="sx-table-detail">
+		                  		<h5 class="sx-title" style="">
+		                  			田垄御寒防护措施，防寒布，30平米
+		                  		</h5>
+		                  		<div class="sx-expiry" style="">
+		                  			<span class="a-size-small">使用时期:冬季</span>
+		                  		</div>
+		                  		<div class="sx-date" style="">
+		                  			起止日期: 4月5号 至 6月23号
+		                  		</div>
+		                  	</div>
+		                  </div>
+		                </div>
+	              	</div>
+	              	 <div class="mui-cart">
+			     	 	<ul class="mui-tabel-view">
+ 							<li class="mui-table-view-cell mui-collapse">
+								<a class="mui-navigate-right custom-resume" href="#">使用履历</a>
+								<div class="mui-collapse-content">
+									<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+								        <li class="mui-table-view-cell" style="padding-left: 15px;">
+								            <div class="mui-table">
+								                <div class="mui-table-cell mui-col-xs-10">
+								                    <h5 class="sx-title" >
+							                  			田垄御寒防护措施，防寒布，30平米
+							                  		</h5>
+								                    <div class="mui-h6 mui-ellipsis">起止日期: 4月5号 至 6月23号</div>
+								                </div>
+								            </div>
+								        </li>
+								        <li class="mui-table-view-cell" style="padding-left: 15px;">
+								            <div class="mui-table">
+						                      	<div class="mui-table-cell mui-col-xs-10">
+								                    <h5 class="sx-title" >
+							                  			田垄御寒防护措施，防寒布，30平米
+							                  		</h5>
+								                    <div class="mui-h6 mui-ellipsis">起止日期: 4月5号 至 6月23号</div>
+								                </div>
+								            </div>
+								        </li>
+									</ul>
+								</div>
+							</li>
+			     	 	</ul>
+			     	 </div>
+				</div>
+			<<# }>>
+		</script>
+		<script type="text/javascript" src="../../../../public/Frontend/MUI/Js/landInfo/lslider-gxl.js" ></script>
+		<script type="text/javascript">
+			laytpl.config({
+				open:"<<",
+				close:">>"
+			});
+			var infoSQL=[0,1];
+			infoSQL[0]=1;
+			infoSQL[1]={
+				"title":["环境","生长周期","健康水平","设施及防护"],
+				"air_temp":"33.6℃",
+				"hnm":"16.9%",
+				"dew":"5.1°",
+				"illum":"13040/Lux",
+				"land_temp":"24.1℃",
+				"org":{
+					"N":"10mg/Kg",
+					"P":"110mg/Kg",
+					"K":"80mg/Kg",
+					"M":"58mg/Kg"
+				},
+				"canHave":3,
+				"sowNum":25,
+				"isLive":24
+				
+			}
+			var tpl=$("#land_tpl").html();
+				laytpl(tpl).render(infoSQL,function(html){
+					$("#land_info_list").html(html);
+					chart(infoSQL[0]);
+				});
+			mui("#nav_bar").on("tap","a",function(){
+				var id=$(this).attr("id");
+				infoSQL[0]=id;
+				var label = $(this).find(".mui-tab-label");
+				console.log(label.text());
+				if(label.text() === "健康"){
+					layer.tips('还未开始种植，无法显示!', $(this), {tips: 1});
+					return false;
+				}
+				var tpl=$("#land_tpl").html();
+				laytpl(tpl).render(infoSQL,function(html){
+					$("#land_info_list").html(html);
+					chart(infoSQL[0]);
+						radius(50,$(".time span"),$(".pie1"),$(".pie2"));
+						$(".hold").css({"top":"15px","left":"-46px"});
+						$(".bg").css({"top":"15px","left":"-46px"});
+						$(".time").css({"top":"15px","left":"-46px"});
+				});
+				
+				
+				
+				
+				//			多图轮播组建
+				var swiper = $('.swiper-container');
+				var startX, endX,end;
+				defended(swiper,startX,endX,end);
+//				console.log(swiper);
+//				swiper.on('dragstart',function(e){
+//					startX = Number(e['detail'].touches[0].pageX);
+//				
+//					swiper.find('.swiper-wrapper').css({
+//						transitionDuration: "0ms"
+//					});
+//				});
+//				swiper.on("drag",function(e){
+////					console.log('drag');
+//					var maxLen = $(window).width();
+//					var x = (e['detail'].touches[0].pageX);
+//					var moveX = x - startX;
+////					 if(moveX == x - startX){
+////						moveX  += 1;
+////					}else{
+////						moveX = x - startX;
+////					}
+////					if(moveX <0 && maxLen <= $('.mui-control-content.mui-active').height()){
+////						return;
+////					}
+//					tabView = $(this) ;
+//					end = end == undefined? 0 : end
+//					swiper.find('.swiper-wrapper').css({
+//						transform: 'translate3d('+ (end + moveX) + 'px,0,0)',
+////						transitionDuration: "300ms",
+//					});
+//					
+//				});
+//				swiper.on('dragend',function(e){
+//					endX = Number(e['detail'].touches[0].pageX);
+//					var endMove = endX - startX;
+//					var cellWidth = swiper.find('.swiper-slide').width();
+//					var cellLen = cellWidth + 22;
+//					var matrix = swiper.find('.swiper-wrapper').css('transform').split(',');
+//					end = Math.round(matrix[4]);
+//					var aniX = endMove%cellLen;
+////					swiper.find('.swiper-slide').css({
+////							transform: 'translate3d('+ end + 'px,0,0)',
+////							transitionDuration: "300ms"
+////					});
+//					setTimeout(function(){
+//						swiper.find('.swiper-wrapper').css({
+//							transitionDuration: "300ms"
+//						});
+//						if(Math.abs(endMove) >= cellLen/3){
+//							var diff = end%cellLen;
+//							if(aniX >= 0){
+//								swiper.find('.swiper-wrapper').css({
+//									transform: 'translate3d('+ (end - diff) + 'px,0,0)',
+//								});
+//								end = end -diff;
+//							}else {
+//								before = cellLen - Math.abs(diff);
+//								swiper.find('.swiper-wrapper').css({
+//									transform: 'translate3d('+ (end - before) + 'px,0,0)',
+//								});
+//								end = end - before;
+//							}
+//						}else {
+//							var diff = end%cellLen;
+//							if(aniX >= 0){
+//								if(Math.abs(end) > cellLen){
+//									swiper.find('.swiper-wrapper').css({
+//										transform: 'translate3d('+ (end - diff - cellLen) + 'px,0,0)',
+//									});
+//									end = end - diff - cellLen;
+//								}else{
+//									swiper.find('.swiper-wrapper').css({
+//										transform: 'translate3d('+ (end - diff ) + 'px,0,0)',
+//									});
+//									end = end- diff;
+//								}
+//								
+//								
+//							}else{
+//								before = cellLen - Math.abs(diff);
+//								swiper.find('.swiper-wrapper').css({
+//									transform: 'translate3d('+ (end - before + cellLen) + 'px,0,0)',
+//								});
+//								end = end - before +cellLen;
+//							}
+//						}
+//						if(end > 0){
+//							swiper.find('.swiper-wrapper').css({
+//								transform: 'translate3d('+ 0 + 'px,0,0)',
+//							});
+//							end = 0;
+//						}else if(end < -cellLen * (swiper.find('.swiper-wrapper').children().length - 2)){
+//							console.log("out of range");
+//							swiper.find('.swiper-wrapper').css({
+//								transform: 'translate3d('+ -cellLen * (swiper.find('.swiper-wrapper').children().length - 2) + 'px,0,0)',
+//							});
+//							end = -cellLen * (swiper.find('.swiper-wrapper').children().length - 2);
+//						}
+////						console.log(swiper.find('.swiper-wrapper').children());
+//						var index = Math.abs(end/cellLen);
+//						var bullet = $('.swiper-pagination');
+////						console.log(bullet);
+//						for(var i =0;i<bullet.children().length;i++){
+//							if(i === index){
+//								$(bullet.children()[i]).addClass('.swiper-pagination-bullet-active');
+//								$(bullet.children()[i]).css({
+//										opacity: "1",
+//										background: "#007aff"
+//								});
+//							}else{
+//								$(bullet.children()[i]).removeClass('.swiper-pagination-bullet-active');
+//								$(bullet.children()[i]).css({
+//										opacity: ".2",
+//										background: "#000"
+//								});
+//							}
+//						}
+//						console.log(bullet.children()[index]);
+//					},150);
+//				
+//				});
+			})
+			
+
+		
+		</script>
+	</body>
+
+</html>

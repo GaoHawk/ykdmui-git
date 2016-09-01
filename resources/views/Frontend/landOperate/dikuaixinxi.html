@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">    
+   <title></title>
+    <script src="../../../../public/Frontend/MUI/Js/MUI.min.js"></script>
+    <script src="../../../../public/Frontend/MUI/Js/jQuery-2.2.1.min.js"></script>
+    <link href="../../../../public/Frontend/MUI/Css/Style.css" rel="stylesheet"/>
+
+    <style>
+    	body,html{
+    		overflow-x: hidden;
+    		overflow-y: hidden;
+    	}
+    	
+    	/*page1 css code*/
+		.title{
+			height: 100px;
+			margin-top: 15px;
+			background-color: white;
+		}
+		.title span{
+			
+			color: blue;
+			line-height: 250%;
+			
+		}
+		 .num{
+			padding-left: 5px;
+			padding-right: 25px;
+		}
+		.crop{
+			padding-right: 20px;
+		}
+		.growth{
+			padding-left: 101px;
+		}
+		.custom-rightInfo{
+			position: relative;
+			top: 8px;
+			left: 142px;
+		}
+		.mui-media-body{
+			position: relative;
+			top: 8px;
+			left: 15px;
+		}
+		.mui-media-object{
+			/*position: relative;*/
+			padding-left:40px ;
+			margin-right: 6px;
+		}
+		.mui-table-view-cell{
+			padding-top: 9px;
+			padding-bottom: 9px;
+		}
+		.custom-Num{
+			position: relative;
+			top: 30px;
+			font-size: 15px;
+
+		}
+		.mui-content-padded{
+			background-color: white;
+			height: 75px;
+			margin: 0 auto;
+			position: relative;
+			
+		}
+		.mui-pager{
+			background-color: white;
+			margin-top: 8px;
+		}
+		.mui-previous a{
+			position: relative;
+			top: 18px;
+		}
+		.mui-next a{
+			position: relative;
+			top: 18px;
+		}
+		.custom-field{
+			padding-top:17px ;
+			padding-left: 1px;
+		}
+		.custom-first{
+			background-color: lightpink;
+			position: relative;
+			z-index: -2;
+			height: 45px;
+			/*list-style-type: none;*/
+			/*color: blue;*/
+			padding-left: 102px;
+			padding-top: 20px ;
+		}
+		.custom-head{
+			padding-left: 0px;
+			margin-top: 1px;
+		}
+		.custom-fieldimg{
+			height: 77px;
+			width: 77px;
+			float: left;
+			left:22px;
+			top:5px;
+			position: relative;
+			z-index: 25;
+			background-size:cover;
+		}
+		.mui-content-padded{
+			height: 87px;
+		}
+		.custom-growth{
+			position: relative;
+			left: 26px;
+			top: 11px;
+		}
+		.custom-headlist{
+			display: inline-block;
+			position: relative;
+			height: 80%;
+			left: 64px;
+			top: 20px;
+			border-right:2.5px solid #D9D9D9;
+		}
+		.custom-headlist span{
+			position: relative;
+			top: 5px;
+			right: 8px;
+		}
+		.custom-point{
+			background-color: #E9ECF1;
+			width: 12px;
+			height: 12px;
+			border-radius:50% ;
+			position: relative;
+			z-index: 2;
+			left: 29px;
+			bottom: 24px;
+		}
+		.custom-pointInner{
+			background-color: #FEFEFE;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			position: relative;
+			z-index: 30;
+			bottom: 34px;
+			left: 31px;
+		}
+		.custom-rightLine{
+			display: inline-block;
+			position: relative;
+			height: 64px;
+			left: 17px;
+			top: 4px;
+			border-right:2.5px solid #D9D9D9;
+		}
+		.mui-table-view-cell{
+			padding-bottom: 0px;
+			padding-top: 0px;
+		}
+		.custom-pointdown{
+			background-color: cornflowerblue;
+			width: 10px;
+			height: 10px;
+			border-radius:50% ;
+			position: relative;
+			z-index: 2;
+			left: 79px;
+			bottom: 42px;
+		}
+		.custom-reward{
+			/*float: right;*/
+			
+			position: relative;
+			top: 0px;
+			left: 32px;
+		}
+		.custom-reward p{
+			width: 150px;
+		}
+		.custom-pointdown-yellow{
+			background-color: yellow;
+			width: 10px;
+			height: 10px;
+			border-radius:50% ;
+			position: relative;
+			z-index: 2;
+			left: 79px;
+			bottom: 42px;
+		}
+		.custom-input{
+			display: inline-block;
+			position: fixed;
+			top: 175px;
+			width:  182px;
+			padding: 5px 0px;
+			left: 120px;
+		}
+		.custom-input-button{
+			position: absolute;
+			border: 1px solid darkgray;
+			/*border-radius:calc() ;*/
+			right: 12px;
+			top: 175px;
+			padding: 4px;
+		}
+		.custom-btn-camera{
+			-webkit-transform:scale(0.75,0.75); 
+			position: absolute;
+			top: 207px;
+			left: 103px;
+			/*background-size:cover ;*/
+		}
+		.custom-estimate{
+			position: absolute;
+			/*border-style: dashed ;*/
+			top: 211px;
+			padding-bottom: 4px;
+			right: 12px;
+		}
+		
+		
+		/*实景照片css code*/
+		.title{
+			background-color: #EFEFF4;
+		}
+		.customInfo button{
+			position: relative;
+			left: 312px;
+
+		}
+		.title h4{
+			position: relative;
+			left: 5px;
+			top: 28px;
+		}
+		.custom-descImg{
+			background-color: lightgoldenrodyellow;
+			height: 98px;
+			width: 98px;
+			margin-left: 8px;
+			padding-top: 37px;
+			padding-left: 15px;
+			float: left;
+		}
+		.custom-addImg{
+			border: 1px solid #002240;
+			border-style: dashed ;
+			height: 80px;
+			width: 80px;
+			float: right;
+			padding-left: 7px;
+			padding-top: 6px;
+			margin-right: 10px;
+			margin-top: 2px;
+		}
+		.custom-addImg span{
+			display: inline-block;
+			margin-left: 27px;
+			-webkit-transform:scale(2,2); 
+		}
+		.mui-btn-block{
+			position: relative;
+			top: 243px;
+			width: 368px;
+			left: 3px;
+			/*border-radius: ;*/
+		}
+
+		
+		/*变更生长周期 css code*/
+		
+	.custom-sli{
+		position:fixed;
+		margin: 0;
+		padding: 0;
+		height: 10px;
+		width: 100%;
+		background-color: black;
+		top: 505px;
+		right: 325px;
+		transform:rotate(90deg);
+	}
+	.bar{
+		display: inline-block;
+		position: absolute;
+		width: 35px;
+		height: 35px;
+		border-radius:50% ;
+		background-color:black;
+		/*transform:rotate(90deg);*/
+		z-index: 5;
+		top: 140px;
+		left: 239px;		
+	}	
+  	.custom-hint{
+  		background-color: green;
+  		width: 35px;
+  		height: 35px;
+  		position: absolute;
+  		left: 288px;
+  		top: 140px;
+  		/*display: block;*/
+  	}
+	.complet{
+		display: inline-block;
+		position: absolute;
+		width: 35px;
+		height: 35px;
+		border-radius:50% ;
+		background-color:grey;
+		top: 300px;
+		left: 239px;
+	}
+	.custom-confirm{
+		display: inline-block;
+		position: absolute;
+		width: 200px;
+		height: 75px;
+		border-radius: 20px;
+		width: 800px;
+		background-color: #D9EDF7;
+		left: 15px;
+		display: none;
+	}
+	.custom-data{
+		display: inline-block;
+		position: relative;
+		font-size: 50px;
+		top: 10px;
+		left: 115px;
+	}
+	.custom-cycle{
+		display: inline-block;
+		position: relative;
+		font-size: 50px;
+		top: 10px;
+		left: 156px;
+	}
+	.custom-point{
+		background-color: coral;
+		width: 31px;
+		height: 31px;
+		border-radius:50% ;
+		position: relative;
+		z-index: 2;
+		left: 225px;
+		bottom: 31px;
+	}
+	.custom-pointInner{
+		background-color: #FEFEFE;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		position: relative;
+		z-index: 30;
+		bottom: 56px;
+		left: 230px;
+	}
+	.custom-icon-confirm{
+		position: relative;
+		display: inline-block;
+		background-color: #EFEFEF;
+		border: 1px solid black;
+		color: green;
+		width: 50px;
+		height: 50px;
+		left: 502px;
+		bottom: 95px;
+		font-size: 40px;
+		border-radius:50% ;
+		padding-left: 14px;
+	}
+	.custom-icon-cancel{
+		color: red;
+		font-size: 40px;
+		position: relative;
+		display: inline-block;
+		border: 1px solid black;
+		border-radius:50% ;
+		background-color: #efefef;
+		width: 50px;
+		height: 50px;
+		left: 550px;
+		bottom: 95px;
+		padding-left: 13px;
+		padding-bottom: 5px;
+		
+	}
+    </style>
+</head>
+<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="back()"></a>
+			<h1 class="mui-title">media list（图文列表）</h1>
+		</header>
+		
+		<div class="mui-content">
+			
+			<!--<h5 class="mui-content-padded">翻页(对齐)</h5>-->
+			<div class="mui-content-padded" >
+				
+				<ul class="custom-head" >
+					<img  class="custom-fieldimg"    src="../../../../public/Frontend/MUI/Image/dc6e6ed05c15c6dc80615a65b1b9e19d.jpg"/>
+					<li class="custom-first" >
+						作物名称
+					</li>
+					<li>
+						<span class="custom-growth"> 生长周期</span><span class="mui-pull-right" style="padding-right: 12px;padding-top: 10px;">A-13982</span>
+					</li>
+				</ul>
+			</div>
+		<div class="custom-page1">
+			<div class="title">
+				<div class="custom-headlist"  >
+					<span>今天</span> 
+					<div class="custom-point"></div>
+					<div class="custom-pointInner"></div>
+				
+				</div >
+					<input class="custom-input" placeholder="带清除按钮的输入框"><button class="custom-input-button"  onclick="proc()">变更</button>
+					<button class="mui-icon mui-icon-camera custom-btn-camera ">添加实景相片</button> <button class="custom-estimate">产量预估</button>					
+			</div>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right">
+						<span class="mui-pull-left custom-Num" > 2016-3-12</span>
+					
+						<div class="custom-rightLine">
+							
+						</div>
+						<div class="custom-pointdown">
+							<span class="mui-media-body custom-reward">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城.</p>
+							</span>
+						</div>
+					</a>
+					
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right">
+						<span class="mui-pull-left custom-Num" > 2016-3-12</span>
+					
+						<div class="custom-rightLine">
+							
+						</div>
+						<div class="custom-pointdown-yellow">
+							<span class="mui-media-body custom-reward">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城.</p>
+							</span>
+						</div>
+					</a>
+					
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right">
+						<span class="mui-pull-left custom-Num" > 2016-3-12</span>
+					
+						<div class="custom-rightLine">
+							
+						</div>
+						<div class="custom-pointdown-yellow">
+							<span class="mui-media-body custom-reward">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城.</p>
+							</span>
+						</div>
+					</a>
+					
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right">
+						<span class="mui-pull-left custom-Num" > 2016-3-12</span>
+					
+						<div class="custom-rightLine">
+							
+						</div>
+						<div class="custom-pointdown">
+							<span class="mui-media-body custom-reward">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城.</p>
+							</span>
+						</div>
+					</a>
+					
+				</li>
+			</ul>
+		</div>
+		<div id="tabbar" >
+			
+			<div class="title customInfo"> <h4>长势说明 </h4>  <button>模板</button>
+				<div class="mui-input-row" style="margin: 10px 5px;">
+						<textarea id="textarea" rows="5" placeholder="多行文本框"></textarea>
+				</div>
+				
+				<div class="custom-descImg">长势图片</div>
+				<div class="custom-descImg">长势图片</div>
+				<div class="custom-addImg"><span>+</span><br />添加照片</div>
+				
+			</div>
+		    <button type="button" class="mui-btn mui-btn-block">提交</button>
+		</div>
+		
+		<div id="changeGrow" style="width: 100%;">
+				<div class="title">
+					<div class="custom-headlist"  >
+						<span>今天</span> 
+						<div class="custom-point"></div>
+						<div class="custom-pointInner"></div>
+					
+					</div >
+				</div>
+				<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right">
+						<span class="mui-pull-left custom-Num" > 2016-3-12</span>
+					
+						<div class="custom-rightLine">
+							
+						</div>
+						<div class="custom-pointdown">
+							<span class="mui-media-body custom-reward">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城.</p>
+							</span>
+						</div>
+					</a>
+					
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right">
+						<span class="mui-pull-left custom-Num" > 2016-3-12</span>
+					
+						<div class="custom-rightLine">
+							
+						</div>
+						<div class="custom-pointdown-yellow">
+							<span class="mui-media-body custom-reward">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城.</p>
+							</span>
+						</div>
+					</a>
+					
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right">
+						<span class="mui-pull-left custom-Num" > 2016-3-12</span>
+					
+						<div class="custom-rightLine">
+							
+						</div>
+						<div class="custom-pointdown-yellow">
+							<span class="mui-media-body custom-reward">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城.</p>
+							</span>
+						</div>
+					</a>
+					
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right">
+						<span class="mui-pull-left custom-Num" > 2016-3-12</span>
+					
+						<div class="custom-rightLine">
+							
+						</div>
+						<div class="custom-pointdown">
+							<span class="mui-media-body custom-reward">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城.</p>
+							</span>
+						</div>
+					</a>
+					
+				</li>
+			</ul>
+			 <div class="bar">
+			 </div>
+			 <div class="complet"></div>
+			 <div class="custom-hint"></div>
+			
+			<div class="custom-confirm">
+				<div class="custom-data">今天</div>
+			
+				<div class="custom-cycle">生长旺期 </div>
+					<div class="custom-point"></div>
+				<div class="custom-pointInner"></div>
+				
+				<div class="custom-icon-confirm" onclick="confirm()">✔</div>
+				<div class="custom-icon-cancel" onclick="cancel()">✘</div>
+			</div>
+		</div>
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init({
+      		swipeBack:true
+      	});
+      	var tabbar = $("#tabbar");
+      	var page1 = $(".custom-page1");
+      		page1.hide();
+			tabbar.hide();
+      	function proc(){
+      		
+      		console.log($("#tabbar").offset().top);
+      		page1.hide();
+      		$('#tabbar').css({
+      			marginTop : 0 + 'px'
+      		});
+  		
+      	}
+      	function back(){
+      		console.log('back');
+      		page1.show();
+      	}
+      	
+	var glObj = {};
+ 	glObj.domObj = {
+ 		cir : document.getElementsByClassName("bar"),
+ 		ul : document.getElementsByClassName("mui-table-view"),
+		hid : document.getElementsByClassName("custom-hint"),
+		conf : document.getElementsByClassName("custom-confirm")
+ 	}
+ 	console.log(glObj);
+
+	glObj.variable = {
+		maxLen : glObj.domObj["ul"][0].clientWidth + 140,
+		minLen : 140
+	}
+
+	console.log(glObj.variable["maxLen"]);
+	
+	glObj.domObj.cir[0].addEventListener("touchstart",function(e){
+		var  hid = glObj.domObj.hid;
+		console.log(e.type);
+		$(hid[0]).show()
+	},false);
+	glObj.domObj.cir[0].addEventListener("touchmove",function(e){
+		var  hid = glObj.domObj.hid;
+		var  cir = glObj.domObj.cir;
+		var maxLen = glObj.variable.maxLen;
+		var minLen = glObj.variable.minLen;
+		var num = Math.floor(e.touches[0].clientY);
+		var conf = glObj.domObj.conf;
+//		console.log(e.type);
+//		console.log(e.touches[0].clientY);
+//		$(cir[0]).css({
+//			top: e.touches[0].clientY + "px"
+//		});
+//		$(hid[0]).css({
+//			top: e.touches[0].clientY + "px"
+//		});
+		console.log(num);
+		switch (true){
+
+			case num < minLen:
+				$(cir[0]).css({
+				    top: minLen + "px"
+				});	
+				$(hid[0]).css({
+				    top: minLen + "px"
+				});	
+				break;
+			case num >= minLen && num < 300	:
+				$(cir[0]).css({
+					top: e.touches[0].clientY + "px"
+				});
+				$(hid[0]).css({
+					top: e.touches[0].clientY + "px"
+				});
+				break;
+			case num >= 300 && num 	< 315 :
+				$(cir[0]).css({
+					top: 300 + "px"
+				});
+				$(hid[0]).css({
+					top: 300 + "px"
+				});
+				$(cir[0]).hide();
+				$(conf[0]).css({
+					top: 280 + "px"
+				});
+				$(conf[0]).show();
+				alert("农务完成！");
+				break;
+			case num >= 315 && num <=maxLen:
+				$(cir[0]).css({
+					top: e.touches[0].clientY + "px"
+				});
+				$(hid[0]).css({
+					top: e.touches[0].clientY + "px"
+				});
+				break;
+			case  num > maxLen:
+				$(cir[0]).css({
+				    top: maxLen + "px"
+				});		
+				$(hid[0]).css({
+				    top: maxLen + "px"
+				});	
+				break;
+			default:
+				console.log("default");
+		}
+		if(num >= 300 && num < 320){
+			console.log("1");
+		}
+
+	},false);
+	glObj.domObj.cir[0].addEventListener("touchend",function(e){
+		var  hid = glObj.domObj.hid;
+		console.log(e.type);
+		$(hid[0]).hide(400);
+		
+	},false);
+	
+	function confirm(){
+		alert("确认！");
+	}
+	function cancel(){
+		alert("撤销！");
+	}
+	
+    </script>
+	</body>
+</html>
